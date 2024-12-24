@@ -12,7 +12,10 @@ export default function Route() {
     <div className="h-screen flex items-center justify-center bg-blue-500 text-white">
       <div className="flex flex-col items-center  gap-2">
         <span className="flex gap-1">
-          <a className="hover:bg-slate-800 border px-4 py-2" href="">
+          <a
+            className="hover:bg-slate-800 border px-4 py-2"
+            href="https://islamic-guidance-academy-pzvs.vercel.app/register"
+          >
             Proceed here
           </a>
         </span>
