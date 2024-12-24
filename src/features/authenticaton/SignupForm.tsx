@@ -51,12 +51,12 @@ const SignupForm: React.FC = () => {
   return (
     <div className="h-screen  bg-blue-500 text-white  overflow-y-scroll">
       <div className="py-10 flex flex-col items-center justify-center">
-        {/* <div className=" mb-4 flex flex-col items-center">
+        <div className=" mb-4 flex flex-col items-center">
           <h1 className="text-sm md:text-lg  font-extrabold">
             ISLAMIC GUIDANCE ACADAMY STATION
           </h1>
           <p>Register here</p>
-        </div> */}
+        </div>
 
         <div className="w-full md:w-[400px] flex items-center justify-center">
           <form
@@ -221,12 +221,12 @@ const SignupForm: React.FC = () => {
             </button>
           </form>
         </div>
-        <p>
+        {/* <p>
           Already have an account? login{" "}
           <span className="underline font-bold">
             <Link to={"/login"}>here</Link>
           </span>{" "}
-        </p>
+        </p> */}
       </div>
     </div>
   );
