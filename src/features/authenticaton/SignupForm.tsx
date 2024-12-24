@@ -3,7 +3,6 @@ import ShowPasswordIcon from "../../ui/ShowPasswordIcon";
 import SpinnerMini from "../../ui/SpinnerMini";
 import { useSignup } from "./useSignup";
 import { SignupTypes } from "../../interfaces";
-import { Link } from "react-router-dom";
 
 const stations = [
   { id: "63Kw-1446-2401", name: "63Kw-1446-2401" },
