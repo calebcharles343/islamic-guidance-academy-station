@@ -41,11 +41,11 @@ export function useSignup() {
 
         toast.success("Sign up successfull");
         // Navigate to home page after successful login
-        navigate("/login", { replace: true });
+        // navigate("/login", { replace: true });
       } else {
         toast.error(`${data.message}`);
 
-        console.error("Login Error:", data.message);
+        console.error("Signup Error:", data.message);
       }
     },
 
@@ -53,7 +53,7 @@ export function useSignup() {
       toast.error(`${err.response?.data.message}` || "An error occurred");
 
       const error = err.response?.data.message;
-      console.error("Login Error:", error);
+      console.error("Signup Error:", error);
     },
   });
 

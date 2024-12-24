@@ -104,12 +104,12 @@ const LoginForm: React.FC = () => {
           </button>
         </form>
       </div>
-      <p>
+      {/* <p>
         Need and account? signup{" "}
         <span className="underline font-bold">
           <Link to={"/signup"}>here</Link>
         </span>{" "}
-      </p>
+      </p> */}
     </div>
   );
 };

@@ -39,7 +39,7 @@ const router = createBrowserRouter([
   },
 
   { path: "login", element: <Login /> },
-  { path: "signup", element: <Signup /> },
+  { path: "secret-001/signup", element: <Signup /> },
   { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
 ]);
 
