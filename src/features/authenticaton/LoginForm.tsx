@@ -4,7 +4,6 @@ import { FormEvent, useState } from "react";
 import ShowPasswordIcon from "../../ui/ShowPasswordIcon";
 import SpinnerMini from "../../ui/SpinnerMini";
 import { useLogin } from "./useLogin";
-import { Link } from "react-router-dom";
 
 interface FormData {
   email: string;

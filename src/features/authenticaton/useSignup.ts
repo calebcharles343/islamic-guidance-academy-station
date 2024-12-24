@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { signup as signupApi } from "../../services/apiAuth.ts";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-hot-toast";
@@ -26,7 +26,7 @@ interface LoginError extends AxiosError {
 }
 
 export function useSignup() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {
     mutate: signup,
