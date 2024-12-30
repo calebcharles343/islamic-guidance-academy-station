@@ -1,14 +1,9 @@
 import axios from "axios";
 
 import { SignupTypes } from "../interfaces.ts";
-// import Cookies from "js-cookie";
-
-// const apiURL = "https://shopping-list-f1b6.onrender.com/api/v1/shopping-list";
-// const authToken = Cookies.get("jwt");
 
 const apiURL =
   "https://islamic-guidance-academy-station.onrender.com/api/v1/islamic-guidance-academy";
-// const headers = { authorization: `Bearer ${authToken}` };
 
 export const login = async function (email: string, password: string) {
   try {
@@ -23,11 +18,9 @@ export const login = async function (email: string, password: string) {
 
     return response.data;
   } catch (err) {
-    // ErrorHandler(err);
     if (axios.isAxiosError(err)) {
       return err.response?.data;
     } else {
-      // Handle other errors
       console.log(err);
     }
   }

@@ -12,6 +12,7 @@ import Signup from "./features/authenticaton/SignupForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import AuthGuard from "./features/authenticaton/AuthGuard";
+import VerificationForm from "./features/authenticaton/VerificationForm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
 
   { path: "login", element: <Login /> },
   { path: "secret-001/signup", element: <Signup /> },
+  { path: "verification", element: <VerificationForm /> },
   { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
 ]);
 
