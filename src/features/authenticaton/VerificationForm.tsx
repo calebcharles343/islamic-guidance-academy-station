@@ -80,7 +80,7 @@ const VerificationForm: React.FC = () => {
         <div className=" w-full md:w-[400px] flex items-center justify-center gap-2">
           <form onSubmit={handleSubmit} className=" flex flex-col w-full gap-2">
             <div className="flex flex-col items-center gap-2">
-              <div className="text-center text-sm font-bold w-[100px] h-[100px] border">
+              <div className="text-center text-sm font-bold w-24 h-24 border">
                 {previewSource ? (
                   <img
                     src={previewSource}
@@ -101,7 +101,7 @@ const VerificationForm: React.FC = () => {
               />
               <label
                 htmlFor="imageInput"
-                className="flex items-center justify-center text-xs border border-solid border-white bg-slate-800 rounded-sm cursor-pointer w-22 sm:w-24 p-2"
+                className="flex items-center justify-center text-xs border border-solid border-white bg-slate-800 rounded-sm cursor-pointer w-24 sm:w-24 p-2"
               >
                 Upload Photo
               </label>
