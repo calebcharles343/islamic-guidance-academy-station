@@ -4,6 +4,8 @@ import SpinnerMini from "../../ui/SpinnerMini";
 import { FormTypes } from "../../interfaces";
 import { useVerification } from "./useVerifacation";
 import toast from "react-hot-toast/headless";
+import { useLogout } from "./useLogout";
+import { BiLogOut } from "react-icons/bi";
 
 const VerificationForm: React.FC = () => {
   const [fileInputState, setFileInputState] = useState("");
@@ -67,8 +69,28 @@ const VerificationForm: React.FC = () => {
     verify(data);
   };
 
+  const { logout, isPending: isLoggingOut } = useLogout();
+
+  const handleLogout = async () => {
+    logout();
+  };
+
   return (
-    <div className=" h-screen  bg-blue-500 text-white  overflow-y-scroll pb-16">
+    <div className=" flex flex-col h-screen  bg-blue-500 text-white  overflow-y-scroll md:px-4 pt-8 pb-16">
+      <div className="ml-2 md:ml-0">
+        {isLoggingOut ? (
+          <SpinnerMini />
+        ) : (
+          <button
+            className="flex items-center justify-center gap-2 mt-auto mb-0 text-gray-800 bg-gray-50 p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
+            onClick={handleLogout}
+          >
+            <BiLogOut />
+            Log out
+          </button>
+        )}
+      </div>
+
       <div className="py-10 flex flex-col items-center justify-center">
         <div className=" mb-4 flex flex-col items-center">
           <h1 className="text-sm md:text-lg  font-extrabold">
