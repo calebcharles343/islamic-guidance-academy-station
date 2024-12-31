@@ -68,7 +68,7 @@ const VerificationForm: React.FC = () => {
   };
 
   return (
-    <div className=" h-screen  bg-blue-500 text-white  overflow-y-scroll">
+    <div className=" h-screen  bg-blue-500 text-white  overflow-y-scroll pb-16">
       <div className="py-10 flex flex-col items-center justify-center">
         <div className=" mb-4 flex flex-col items-center">
           <h1 className="text-sm md:text-lg  font-extrabold">
