@@ -1,6 +1,7 @@
 import { BiLogOut } from "react-icons/bi";
 import { useLogout } from "../features/authenticaton/useLogout";
 import SpinnerMini from "../ui/SpinnerMini";
+import { NavLink } from "react-router-dom";
 
 export default function Route() {
   const { logout, isPending } = useLogout();
@@ -8,17 +9,25 @@ export default function Route() {
   const handleLogout = async () => {
     logout();
   };
+
   return (
     <div className="h-screen flex items-center justify-center bg-blue-500 text-white">
-      <div className="flex flex-col items-center  gap-2">
-        <span className="flex gap-1">
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-4">
           <a
             className="hover:bg-slate-800 border px-4 py-2"
             href="https://islamic-guidance-academy-pzvs.vercel.app/register"
           >
-            Proceed here
+            Proceed to student registration
           </a>
-        </span>
+
+          <NavLink
+            to="/verification"
+            className="hover:bg-slate-800 border px-4 py-2"
+          >
+            <span className="">Proceed to verification</span>
+          </NavLink>
+        </div>
 
         <p> Or</p>
         {isPending ? (

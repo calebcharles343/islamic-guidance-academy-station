@@ -36,12 +36,14 @@ const router = createBrowserRouter([
         path: "home",
         element: <Home />,
       },
+
+      { path: "verification", element: <VerificationForm /> },
     ],
   },
 
   { path: "login", element: <Login /> },
   { path: "secret-001/signup", element: <Signup /> },
-  { path: "verification", element: <VerificationForm /> },
+
   { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
 ]);
 
