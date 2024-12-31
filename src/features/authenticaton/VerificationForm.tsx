@@ -32,11 +32,18 @@ const VerificationForm: React.FC = () => {
 
   const { verify, isPending } = useVerification();
 
+  // const handleInputChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  // ) => {
+  //   const { id, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [id]: value.trim() }));
+  // };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value.trim() }));
+    setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
