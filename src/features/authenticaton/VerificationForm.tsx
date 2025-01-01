@@ -166,7 +166,7 @@ const VerificationForm: React.FC = () => {
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="mrn"
                     type="text"
-                    placeholder="Enter your email"
+                    placeholder="Enter your mrn"
                     value={formData.mrn}
                     onChange={handleInputChange}
                     required
@@ -184,7 +184,7 @@ const VerificationForm: React.FC = () => {
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="fileNumber"
                     type="text"
-                    placeholder="Enter your username"
+                    placeholder="Enter your file number"
                     value={formData.fileNumber}
                     onChange={handleInputChange}
                     required
