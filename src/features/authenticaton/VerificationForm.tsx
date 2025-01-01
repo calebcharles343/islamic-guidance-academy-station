@@ -166,7 +166,7 @@ const VerificationForm: React.FC = () => {
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="mrn"
                     type="text"
-                    placeholder="Enter your mrn"
+                    placeholder="Enter your MRN"
                     value={formData.mrn}
                     onChange={handleInputChange}
                     required
@@ -256,7 +256,7 @@ const VerificationForm: React.FC = () => {
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="stateOforigin"
                     type="text"
-                    placeholder="Enter your state Of origin"
+                    placeholder="Enter your state of origin"
                     value={formData.stateOforigin}
                     onChange={handleInputChange}
                     required
