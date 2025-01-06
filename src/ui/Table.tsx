@@ -19,10 +19,10 @@ const Table: FC<TableProps> & {
 } = ({ columns, children }) => {
   return (
     <TableContext.Provider value={{ columns }}>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-full">
         <div
           role="table"
-          className="w-full md:w-[600px] border border-gray-200 text-sm rounded-md overflow-hidden"
+          className="w-full sm:w-[600px] border border-gray-200 text-sm rounded-md overflow-hidden"
         >
           {children}
         </div>
@@ -35,7 +35,7 @@ const Header: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div
       role="row"
-      className="grid grid-cols-[0.5fr_3.5fr_70px]  md:grid-cols-[0.5fr_3.5fr_85px] bg-gray-100 border-b border-gray-200 uppercase tracking-wide font-semibold text-gray-600"
+      className="w-full grid grid-cols-[0.5fr_3.5fr_70px]  md:grid-cols-[0.5fr_3.5fr_85px] bg-gray-100 border-b border-gray-200 uppercase tracking-wide font-semibold text-gray-600"
     >
       {children}
     </div>
