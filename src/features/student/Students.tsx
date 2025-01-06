@@ -5,6 +5,7 @@ import Table from "../../ui/Table";
 import Student from "./Student";
 import TableModal from "../../ui/TableModal";
 import { StudentType } from "../../interfaces";
+import { BiSearch } from "react-icons/bi";
 
 const Students: React.FC = () => {
   const { data: students, isLoading } = useStudents();
@@ -53,14 +54,21 @@ const Students: React.FC = () => {
   }
 
   return (
-    <div className="bg-blue-500 flex flex-col items-center w-full py-8 px-2">
-      <div className="w-full max-w-[240px] md:max-w-[265px] mb-2  md:mb-4">
+    <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2">
+      <span className="text-lg font-bold text-gray-200"> SEARCH</span>
+
+      <div className="flex items-center w-full max-w-[250px] md:max-w-[275px] mb-2  md:mb-4 gap-2">
+        <div className="flex items-center text-gray-200 ">
+          <span className="border p-1">
+            <BiSearch className="w-4 h-4 md:w-6 md:h-6" />
+          </span>
+        </div>
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-xs md:placeholder:text-sm placeholder:text-gray-600"
-          placeholder="BVN, NIN, MRN, Phone or File Number?"
+          className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-xs  placeholder:text-gray-600"
+          placeholder="BVN, NIN, MRN, Phone or File Number"
         />
       </div>
 
