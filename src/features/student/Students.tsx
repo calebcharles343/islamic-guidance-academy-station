@@ -20,10 +20,10 @@ const Students: React.FC = () => {
       const term = searchTerm.toLowerCase();
       const filtered = students.data.filter(
         (student: StudentType) =>
-          student.occupation.toLowerCase().includes(term) ||
-          student.ethnicGroup.toLowerCase().includes(term) ||
-          student.bvn.toLowerCase().includes(term) ||
+          student.mrn.toLowerCase().includes(term) ||
           student.phone.toLowerCase().includes(term) ||
+          student.bvn.toLowerCase().includes(term) ||
+          student.fileNumber.toLowerCase().includes(term) ||
           student.nin.toLowerCase().includes(term)
       );
       setFilteredStudents(filtered);
@@ -60,7 +60,7 @@ const Students: React.FC = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-xs md:placeholder:text-sm placeholder:text-gray-600"
-          placeholder="BVN, NIN, Occupation, or Ethnic Group?"
+          placeholder="BVN, NIN, MRN, Phone of File Number?"
         />
       </div>
 
