@@ -41,10 +41,6 @@ const router = createBrowserRouter([
         path: "verification",
         element: <VerificationForm />,
       },
-      {
-        path: "students-table",
-        element: <StudentsTable />,
-      },
     ],
   },
 
