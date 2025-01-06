@@ -4,7 +4,7 @@ const StudentsTable: React.FC = () => {
   return (
     <div
       className="h-max "
-      style={{ fontFamily: "Roboto", letterSpacing: "2px" }}
+      style={{ fontFamily: "Roboto", letterSpacing: "1px" }}
     >
       <Students />
     </div>
