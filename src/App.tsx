@@ -13,6 +13,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import AuthGuard from "./features/authenticaton/AuthGuard";
 import VerificationForm from "./features/authenticaton/VerificationForm";
+import StudentsTable from "./pages/StudentsTable";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "verification",
         element: <VerificationForm />,
+      },
+      {
+        path: "students-table",
+        element: <StudentsTable />,
       },
     ],
   },

@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-blue-500 text-white pt-16">
+    <div className="h-screen flex flex-col items-center justify-center text-white pt-16">
       <div className=" mb-4 flex flex-col items-center">
         <h1 className="text-sm md:text-lg font-extrabold">
           ISLAMIC GUIDANCE ACADAMY STATION

@@ -74,6 +74,8 @@ const VerificationForm: React.FC = () => {
     };
 
     verify(data);
+
+    setPreviewSource(null);
   };
 
   const { logout, isPending: isLoggingOut } = useLogout();
@@ -83,7 +85,7 @@ const VerificationForm: React.FC = () => {
   };
 
   return (
-    <div className=" flex flex-col h-screen  bg-blue-500 text-white  overflow-y-scroll md:px-4 pt-8 pb-16">
+    <div className=" flex flex-col h-screen text-white  overflow-y-scroll md:px-4 pt-8 pb-16">
       <div className="ml-2 md:ml-0">
         {isLoggingOut ? (
           <SpinnerMini />
