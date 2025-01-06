@@ -57,7 +57,7 @@ const Students: React.FC = () => {
     <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2">
       <span className="text-lg font-bold text-gray-200"> SEARCH</span>
 
-      <div className="flex items-center w-full max-w-[250px] md:max-w-[275px] mb-2  md:mb-4 gap-2">
+      <div className="flex items-center w-full max-w-[250px] md:max-w-[275px] mb-2  md:mb-4 gap-1 md:gap-2">
         <div className="flex items-center text-gray-200 ">
           <span className="border p-1">
             <BiSearch className="w-4 h-4 md:w-6 md:h-6" />
