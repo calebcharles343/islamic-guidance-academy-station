@@ -60,7 +60,7 @@ const Students: React.FC = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-xs md:placeholder:text-sm placeholder:text-gray-600"
-          placeholder="BVN, NIN, MRN, Phone of File Number?"
+          placeholder="BVN, NIN, MRN, Phone or File Number?"
         />
       </div>
 
