@@ -64,7 +64,7 @@ const Students: React.FC = () => {
         />
       </div>
 
-      <div className=" w-full flex flex-col items-center max-h-[600px] overflow-y-scroll px-2">
+      <div className="w-full md:w-[600px] flex flex-col items-center h-[600px] overflow-y-scroll px-2">
         <Table columns="">
           <Table.Header>
             <div className=" h-full text-xs  md:text-base border-r border-gray-800 px-2 py-1">

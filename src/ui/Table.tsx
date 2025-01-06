@@ -22,7 +22,7 @@ const Table: FC<TableProps> & {
       <div className="overflow-x-auto w-full">
         <div
           role="table"
-          className="w-full sm:w-[600px] border border-gray-200 text-sm rounded-md overflow-hidden"
+          className="w-full border border-gray-200 text-sm rounded-md overflow-hidden"
         >
           {children}
         </div>

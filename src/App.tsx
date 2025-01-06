@@ -48,6 +48,10 @@ const router = createBrowserRouter([
     ],
   },
 
+  {
+    path: "students-table",
+    element: <StudentsTable />,
+  },
   { path: "login", element: <Login /> },
   { path: "secret-001/signup", element: <Signup /> },
 
