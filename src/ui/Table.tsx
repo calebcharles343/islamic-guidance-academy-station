@@ -35,7 +35,7 @@ const Header: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div
       role="row"
-      className="w-full grid grid-cols-[40px_3.5fr_70px]  md:grid-cols-[0.5fr_3.5fr_85px] bg-gray-100 border-b border-gray-200 uppercase tracking-wide font-semibold text-gray-600"
+      className="w-full h-[35px] grid grid-cols-[40px_3.5fr_70px]  md:grid-cols-[0.5fr_3.5fr_85px] bg-gray-100 border-b border-gray-200 uppercase tracking-wide font-semibold text-gray-600"
     >
       {children}
     </div>
