@@ -21,10 +21,10 @@ const Students: React.FC = () => {
       const term = searchTerm.toLowerCase();
       const filtered = students.data.filter(
         (student: StudentType) =>
+          student.fileNumber.toLowerCase().includes(term) ||
           student.mrn.toLowerCase().includes(term) ||
           student.phone.toLowerCase().includes(term) ||
           student.bvn.toLowerCase().includes(term) ||
-          student.fileNumber.toLowerCase().includes(term) ||
           student.nin.toLowerCase().includes(term)
       );
       setFilteredStudents(filtered);
@@ -60,7 +60,7 @@ const Students: React.FC = () => {
         SEARCH
       </span>
 
-      <div className="flex items-center w-full max-w-[250px] md:max-w-[275px] mb-2  md:mb-4 gap-1 md:gap-2">
+      <div className="flex items-center w-full max-w-[255px] md:max-w-[275px] mb-2  md:mb-4 gap-1 md:gap-2">
         <div className="flex items-center text-gray-200 ">
           <span className="border p-1">
             <BiSearch className="w-4 h-4 md:w-6 md:h-6" />
@@ -71,7 +71,7 @@ const Students: React.FC = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-xs  placeholder:text-gray-600"
-          placeholder="BVN, NIN, MRN, Phone or File Number"
+          placeholder="File Number, BVN, NIN, MRN or Phone"
         />
       </div>
 
