@@ -85,7 +85,10 @@ const VerificationForm: React.FC = () => {
   };
 
   return (
-    <div className=" flex flex-col h-screen text-white  overflow-y-scroll md:px-4 pt-8 pb-16">
+    <div
+      className=" flex flex-col h-screen text-white  overflow-y-scroll md:px-4 pt-8 pb-16"
+      style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
+    >
       <div className="ml-2 md:ml-0">
         {isLoggingOut ? (
           <SpinnerMini />
@@ -132,7 +135,7 @@ const VerificationForm: React.FC = () => {
               />
               <label
                 htmlFor="imageInput"
-                className="flex items-center justify-center text-xs border border-solid border-white bg-slate-800 rounded-sm cursor-pointer w-24 sm:w-24 p-2"
+                className="flex items-center justify-center text-[10px] border border-solid border-white bg-slate-800 rounded-sm cursor-pointer w-24 sm:w-24 p-2"
               >
                 Upload Photo
               </label>

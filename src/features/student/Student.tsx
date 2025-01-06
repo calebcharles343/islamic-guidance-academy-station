@@ -7,7 +7,10 @@ interface StudentProps {
 
 const Student: React.FC<StudentProps> = ({ student }) => {
   return (
-    <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div
+      className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+      style={{ fontFamily: "Roboto", letterSpacing: "0.6px" }}
+    >
       <img
         className="w-full h-48 object-contain"
         src={student.photo}

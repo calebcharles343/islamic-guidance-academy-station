@@ -50,7 +50,7 @@ const SignupForm: React.FC = () => {
   return (
     <div
       className="h-screen bg-blue-500  text-white  overflow-y-scroll pb-16"
-      style={{ fontFamily: "Roboto" }}
+      style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
     >
       <div className="py-10 flex flex-col items-center justify-center">
         <div className=" mb-4 flex flex-col items-center">
