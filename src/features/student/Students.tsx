@@ -53,7 +53,7 @@ const Students: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col items-center w-full py-8 px-2">
+    <div className="bg-blue-500 flex flex-col items-center w-full py-8 px-2">
       <div className="w-full max-w-[230px] md:max-w-[265px] mb-2  md:mb-4">
         <input
           type="text"
