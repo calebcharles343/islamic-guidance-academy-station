@@ -55,7 +55,10 @@ const Students: React.FC = () => {
 
   return (
     <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2">
-      <span className="text-lg font-bold text-gray-200"> SEARCH</span>
+      <span className="text-base md:text-lg font-bold text-gray-200">
+        {" "}
+        SEARCH
+      </span>
 
       <div className="flex items-center w-full max-w-[250px] md:max-w-[275px] mb-2  md:mb-4 gap-1 md:gap-2">
         <div className="flex items-center text-gray-200 ">
