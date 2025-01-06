@@ -18,7 +18,7 @@ export default function Route() {
             to="/students-table"
             className="hover:bg-slate-800 border px-4 py-2"
           >
-            <span className="">Verified Students</span>
+            <span className="">Verified Members</span>
           </NavLink>
 
           <a
