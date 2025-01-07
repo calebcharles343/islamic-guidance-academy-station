@@ -7,7 +7,11 @@ interface ShowPasswordIconProps {
 const ShowPasswordIcon: React.FC<ShowPasswordIconProps> = ({
   showPassword,
 }) => {
-  return <>{!showPassword ? <HiMiniEye /> : <HiMiniEyeSlash />}</>;
+  return (
+    <div className="text-gray-800">
+      {!showPassword ? <HiMiniEye /> : <HiMiniEyeSlash />}
+    </div>
+  );
 };
 
 export default ShowPasswordIcon;
