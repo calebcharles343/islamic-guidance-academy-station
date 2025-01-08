@@ -25,10 +25,17 @@ export function useLogin() {
           sameSite: "strict",
         });
 
+        console.log(userData);
+
+        // Clear React Query cache
+        queryClient.clear();
+
         // Set user data in React Query cache
         queryClient.setQueryData(["user", userData.id], userData);
-        localStorage.setItem("localUser", JSON.stringify(userData));
-        // Redirect to the home page
+        localStorage.setItem("localUser", JSON.stringify(data.data.user));
+
+        localStorage.setItem(`token-${userData.id}`, data.data.token);
+
         navigate("/home", { replace: true });
       } else {
         toast.error("Provided email or password are incorrect");

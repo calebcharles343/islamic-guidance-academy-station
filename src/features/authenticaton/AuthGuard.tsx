@@ -9,6 +9,8 @@ interface AuthGuardProps {
 const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
   const authToken = Cookies.get("jwt");
 
+  console.log(authToken);
+
   if (!authToken) {
     return <Navigate to="/login" replace />;
   }

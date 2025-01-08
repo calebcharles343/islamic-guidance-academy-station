@@ -1,9 +1,9 @@
 import axios from "axios";
 
 import { SignupTypes } from "../interfaces.ts";
+import { baseUrl } from "./baseUrl.ts";
 
-const apiURL =
-  "https://islamic-guidance-academy-station.onrender.com/api/v1/islamic-guidance-academy";
+const apiURL = baseUrl();
 
 export const login = async function (email: string, password: string) {
   try {
@@ -27,8 +27,6 @@ export const login = async function (email: string, password: string) {
 };
 
 export const signup = async function (data: SignupTypes) {
-  console.log(data, "API❌❌❌");
-
   try {
     const response = await axios.post<SignupTypes>(
       `${apiURL}/stations/signup`,

@@ -3,16 +3,11 @@ import { useMutation } from "@tanstack/react-query";
 import { verification as verificationApi } from "../../services/apiVerificattion.ts";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-hot-toast";
-import { FormTypes } from "../../interfaces.ts";
+// import { UseVerification, UseVerificationTypes } from "../../interfaces.ts";
 
 interface ErrorResponse {
   message: string; // Assuming the error response has a 'message' field
   // Add any other properties that might be in the error response
-}
-
-interface UseVerification {
-  form: FormTypes;
-  photo: string | null;
 }
 
 interface LoginError extends AxiosError {
@@ -27,26 +22,34 @@ export function useVerification() {
     isPending,
     isError,
   } = useMutation({
-    mutationFn: (data: UseVerification) => verificationApi(data),
+    mutationFn: (data) => verificationApi(data),
 
     onSuccess: (data) => {
+      console.log(data);
+
       if (data.status === 201) {
         // const userData = data.data.user;
-
-        console.log(data.data, "❌❌❌");
 
         toast.success("Verification successfull");
         // Navigate to home page after successful login
         // navigate("/login", { replace: true });
       } else {
-        toast.error(`${data.message}`);
+        if (data.message === "Missing required parameter - file") {
+          toast.error(`Please provide photo`);
+        } else {
+          toast.error(`${data.message}`);
+        }
 
         console.error("Verification Error:", data.message);
       }
     },
 
     onError: (err: LoginError) => {
-      toast.error(`${err.response?.data.message}` || "An error occurred");
+      if (err.response?.data.message === "Missing required parameter - file") {
+        toast.error(`Please provide photo`);
+      } else {
+        toast.error(`${err.response?.data.message}` || "An error occurred");
+      }
 
       const error = err.response?.data.message;
       console.error("Verification Error:", error);

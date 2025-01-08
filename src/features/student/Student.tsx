@@ -8,7 +8,7 @@ interface StudentProps {
 const Student: React.FC<StudentProps> = ({ student }) => {
   return (
     <div
-      className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden"
+      className="w-full  mxx-w-[400px] bg-white shadow-lg rounded-lg overflow-hidden"
       style={{ fontFamily: "Roboto", letterSpacing: "0.6px" }}
     >
       <img
@@ -64,6 +64,9 @@ const Student: React.FC<StudentProps> = ({ student }) => {
           </p>
           <p className="text-xs md:text-sm text-gray-600">
             <strong>BVN:</strong> {student.bvn}
+          </p>
+          <p className="text-xs md:text-sm text-gray-600">
+            <strong>Verified By:</strong> {student.station}
           </p>
         </div>
       </div>

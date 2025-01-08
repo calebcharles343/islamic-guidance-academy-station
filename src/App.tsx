@@ -8,7 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Home from "./pages/Home";
 import AppLayout from "./ui/AppLayout";
 import Login from "./features/authenticaton/LoginForm";
-import Signup from "./features/authenticaton/SignupForm";
+import SignupForm from "./features/authenticaton/SignupForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import AuthGuard from "./features/authenticaton/AuthGuard";
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
     element: <StudentsTable />,
   },
   { path: "login", element: <Login /> },
-  { path: "secret-001/signup", element: <Signup /> },
+  { path: "secret-001/signup", element: <SignupForm /> },
 
   { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
 ]);

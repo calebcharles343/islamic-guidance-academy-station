@@ -10,6 +10,7 @@ import { BiLogOut } from "react-icons/bi";
 const VerificationForm: React.FC = () => {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState<string | null>(null);
+
   const [formData, setFormData] = useState<FormTypes>({
     name: "",
     mrn: "",
@@ -17,7 +18,7 @@ const VerificationForm: React.FC = () => {
     dateOfBirth: "",
     phone: "",
     ethnicGroup: "",
-    stateOforigin: "",
+    stateOfOrigin: "",
     residentialAddress: "",
     occupation: "",
     familyHouseName: "",
@@ -68,12 +69,17 @@ const VerificationForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    // if (previewSource === null) {
+    //   toast.error("Please provide your photo");
+    //   return;
+    // }
+
     const data = {
       form: formData,
       photo: previewSource,
     };
 
-    verify(data);
+    verify(data as any);
 
     setPreviewSource(null);
   };
@@ -252,17 +258,17 @@ const VerificationForm: React.FC = () => {
 
                 <div>
                   <label
-                    htmlFor="stateOforigin"
+                    htmlFor="stateOfOrigin"
                     className="block mb-1 font-bold text-gray-700"
                   >
                     State Of Origin
                   </label>
                   <input
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
-                    id="stateOforigin"
+                    id="stateOfOrigin"
                     type="text"
                     placeholder="Enter your state of origin"
-                    value={formData.stateOforigin}
+                    value={formData.stateOfOrigin}
                     onChange={handleInputChange}
                     required
                   />

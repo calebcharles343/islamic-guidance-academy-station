@@ -112,6 +112,8 @@ const LoginForm: React.FC = () => {
           <Link to={"/signup"}>here</Link>
         </span>{" "}
       </p> */}
+
+      {/* <SignupForm /> */}
     </div>
   );
 };
