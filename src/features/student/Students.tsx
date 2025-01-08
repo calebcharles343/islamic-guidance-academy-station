@@ -75,7 +75,7 @@ const Students: React.FC = () => {
         />
       </div>
 
-      <div className="w-full md:w-[600px] flex flex-col items-center h-[600px] overflow-y-scroll px-2">
+      <div className="w-full md:w-[600px] flex flex-col items-center  px-2">
         <Table columns="">
           <Table.Header>
             <div className=" h-full text-xs  md:text-base border-r border-gray-800 px-2 py-1">
@@ -89,31 +89,33 @@ const Students: React.FC = () => {
               Actions
             </div>
           </Table.Header>
-          <Table.Body
-            data={studentsWithIds}
-            render={(student: StudentType) => (
-              <Table.Row key={student.id}>
-                {/* Sequential ID */}
-                <div className="border-r text-white text-xs md:text-base font-bold px-2 py-1">
-                  {student.sequentialId}
-                </div>
+          <div className="h-[500px] overflow-y-scroll">
+            <Table.Body
+              data={studentsWithIds}
+              render={(student: StudentType) => (
+                <Table.Row key={student.id}>
+                  {/* Sequential ID */}
+                  <div className="border-r text-white text-xs md:text-base font-bold px-2 py-1">
+                    {student.sequentialId}
+                  </div>
 
-                <div className=" text-xs md:text-base border-r text-white px-2 py-1 ">
-                  {student.name}
-                </div>
+                  <div className=" text-xs md:text-base border-r text-white px-2 py-1 ">
+                    {student.name}
+                  </div>
 
-                <div className=" text-[8px] flex justify-center px-2 py-1">
-                  <button
-                    className=" text-white bg-blue-500 border border-white hover:bg-blue-600 px-1 rounded-md"
-                    type="button"
-                    onClick={() => handleViewClick(student)}
-                  >
-                    View
-                  </button>
-                </div>
-              </Table.Row>
-            )}
-          />
+                  <div className=" text-[8px] flex justify-center px-2 py-1">
+                    <button
+                      className=" text-white bg-blue-500 border border-white hover:bg-blue-600 px-1 rounded-md"
+                      type="button"
+                      onClick={() => handleViewClick(student)}
+                    >
+                      View
+                    </button>
+                  </div>
+                </Table.Row>
+              )}
+            />
+          </div>
         </Table>
       </div>
 
