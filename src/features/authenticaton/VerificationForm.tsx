@@ -353,9 +353,10 @@ const VerificationForm: React.FC = () => {
                   <input
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="nin"
-                    type="number"
+                    type="text" // Use "text" instead of "number"
                     placeholder="National identification number"
                     value={formData.nin}
+                    pattern="\d{11}" // Enforces exactly 11 digits
                     onChange={handleInputChange}
                     required
                   />
@@ -370,9 +371,10 @@ const VerificationForm: React.FC = () => {
                   <input
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="bvn"
-                    type="number"
+                    type="text" // Use "text" instead of "number"
                     placeholder="Bank verification number"
                     value={formData.bvn}
+                    pattern="\d{11}" // Enforces exactly 11 digits
                     onChange={handleInputChange}
                     required
                   />
