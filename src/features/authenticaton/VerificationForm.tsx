@@ -233,6 +233,7 @@ const VerificationForm: React.FC = () => {
                     type="tel"
                     placeholder="Enter your phone number"
                     value={formData.phone}
+                    pattern="\d{11}" // Enforces exactly 11 digits
                     onChange={handleInputChange}
                     required
                   />

@@ -157,6 +157,7 @@ const SignupForm: React.FC = () => {
                   placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={handleInputChange}
+                  pattern="\d{11}" // Enforces exactly 11 digits
                   required
                 />
               </div>
