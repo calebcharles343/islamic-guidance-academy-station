@@ -5,8 +5,8 @@ import { useSignup } from "./useSignup";
 import { SignupTypes } from "../../interfaces";
 
 const stations = [
-  { id: "63Kw-1446-2401", name: "63Kw-1446-2401" },
-  { id: "63Oy-1446-2401", name: "63Oy-1446-2401" },
+  { id: "NGKW-1446-2401", name: "NGKW-1446-2401" },
+  { id: "NGOY-1446-2401", name: "NGOY-1446-2401" },
 ];
 
 const SignupForm: React.FC = () => {
