@@ -30,7 +30,7 @@ export function useVerification() {
       if (data.status === 201) {
         // const userData = data.data.user;
 
-        toast.success("Verification successfull");
+        toast.success("Verification successful");
         // Navigate to home page after successful login
         // navigate("/login", { replace: true });
       } else {

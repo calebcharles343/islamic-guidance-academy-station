@@ -39,7 +39,7 @@ export function useSignup() {
       if (data.status === 201) {
         // const userData = data.data.user;
 
-        toast.success("Sign up successfull");
+        toast.success("Sign up successful");
         // Navigate to home page after successful login
         // navigate("/login", { replace: true });
       } else {
