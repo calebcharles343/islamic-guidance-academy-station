@@ -13,7 +13,7 @@ const VerificationForm: React.FC = () => {
 
   const [formData, setFormData] = useState<FormTypes>({
     name: "",
-    mrn: "",
+    drn: "",
     fileNumber: "",
     dateOfBirth: "",
     phone: "",
@@ -168,17 +168,17 @@ const VerificationForm: React.FC = () => {
 
                 <div>
                   <label
-                    htmlFor="mrn"
+                    htmlFor="drn"
                     className="block mb-1 font-bold text-gray-700"
                   >
-                    MRN
+                    DRN
                   </label>
                   <input
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
-                    id="mrn"
+                    id="drn"
                     type="text"
-                    placeholder="Enter your MRN"
-                    value={formData.mrn}
+                    placeholder="Enter your DRN"
+                    value={formData.drn}
                     onChange={handleInputChange}
                     required
                   />

@@ -13,7 +13,7 @@ export interface Verification {
   station_id: string;
   station: string;
   name: string;
-  mrn: string;
+  drn: string;
   fileNumber: string;
   dateOfBirth: string;
   phone: string;
@@ -59,6 +59,8 @@ export interface SignupTypes {
   email: string;
   userName: string;
   station: string;
+  drn: string;
+  fileNumber: string;
   phone: string;
   password: string;
   passwordConfirm: string;
@@ -71,7 +73,7 @@ export interface VerificationTypes {
 
 export interface FormTypes {
   name: string;
-  mrn: string;
+  drn: string;
   fileNumber: string;
   dateOfBirth: string;
   phone: string;

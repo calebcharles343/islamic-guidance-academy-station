@@ -15,6 +15,8 @@ const SignupForm: React.FC = () => {
     email: "",
     userName: "",
     station: "",
+    drn: "",
+    fileNumber: "",
     phone: "",
     password: "",
     passwordConfirm: "",
@@ -143,6 +145,41 @@ const SignupForm: React.FC = () => {
                 </select>
               </div>
 
+              <div>
+                <label
+                  htmlFor="drn"
+                  className="block mb-1 font-bold text-gray-700"
+                >
+                  DRN
+                </label>
+                <input
+                  className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  id="drn"
+                  type="text"
+                  placeholder="Enter your DRN"
+                  value={formData.drn}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="fileNumber"
+                  className="block mb-1 font-bold text-gray-700"
+                >
+                  File Number
+                </label>
+                <input
+                  className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  id="fileNumber"
+                  type="text"
+                  placeholder="Enter your file number"
+                  value={formData.fileNumber}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
               <div>
                 <label
                   htmlFor="phone"
