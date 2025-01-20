@@ -7,7 +7,7 @@ interface StudentProps {
 }
 
 const Student: React.FC<StudentProps> = ({ student }) => {
-  const { data: station } = useStation(student.station_id!);
+  const { data: station, isLoading } = useStation(student.station_id!);
 
   // }
   return (
@@ -69,10 +69,14 @@ const Student: React.FC<StudentProps> = ({ student }) => {
           <p className="text-xs md:text-sm text-gray-600">
             <strong>BVN:</strong> {student.bvn}
           </p>
-          <p className="text-xs md:text-sm text-gray-600">
-            <strong>Verified By:</strong> {station.name}
-            {` - ${station.station}`}
-          </p>
+          {isLoading ? (
+            <p> "loading station ..."</p>
+          ) : (
+            <p className="text-xs md:text-sm text-gray-600">
+              <strong>Verified By:</strong> {station.name}
+              {` - ${station.station}`}
+            </p>
+          )}
         </div>
       </div>
     </div>
