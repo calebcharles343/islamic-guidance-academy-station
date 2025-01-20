@@ -1,11 +1,15 @@
 import React from "react";
 import { StudentType } from "../../interfaces";
+import { useStation } from "../authenticaton/useStation";
 
 interface StudentProps {
   student: StudentType;
 }
 
 const Student: React.FC<StudentProps> = ({ student }) => {
+  const { data: station } = useStation(student.station_id!);
+
+  // }
   return (
     <div
       className="w-full  mxx-w-[400px] bg-white shadow-lg rounded-lg overflow-hidden"
@@ -66,7 +70,8 @@ const Student: React.FC<StudentProps> = ({ student }) => {
             <strong>BVN:</strong> {student.bvn}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>Verified By:</strong> {student.station}
+            <strong>Verified By:</strong> {station.name}
+            {` [${station.station}]`}
           </p>
         </div>
       </div>

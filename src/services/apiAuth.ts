@@ -58,23 +58,23 @@ export const logout = async function () {
   }
 };
 
-// export const getUser = async function () {
-//   try {
-//     const response = await axios.get<UserProfileToken>(`${apiURL}/users/user`, {
-//       headers,
-//     });
+export const getStation = async function (id: string) {
+  try {
+    const response = await axios.get(`${apiURL}/stations/${id}`);
 
-//     return response.data.data;
-//   } catch (err) {
-//     // ErrorHandler(err);
-//     if (axios.isAxiosError(err)) {
-//       return err.response?.data;
-//     } else {
-//       // Handle other errors
-//       console.log(err);
-//     }
-//   }
-// };
+    console.log(response);
+
+    return response.data.data;
+  } catch (err) {
+    // ErrorHandler(err);
+    if (axios.isAxiosError(err)) {
+      return err.response?.data;
+    } else {
+      // Handle other errors
+      console.log(err);
+    }
+  }
+};
 
 // export const updateUser = async function (
 //   UserId: number | undefined,

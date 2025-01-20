@@ -112,6 +112,7 @@ export interface StudentType {
   createdAt: string;
   updatedAt: string;
   id: string;
-  sequentialId?: number;
+  sequentialId: string;
+  station_id?: number;
   station: string;
 }
