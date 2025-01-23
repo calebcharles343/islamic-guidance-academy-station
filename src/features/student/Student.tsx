@@ -74,7 +74,9 @@ const Student: React.FC<StudentProps> = ({ student }) => {
           ) : (
             <p className="text-xs md:text-sm text-gray-600">
               <strong>Verified By:</strong> {station.name}
-              {` - ${station.station}`}
+              {` - ${station.station} - ${
+                station.drn !== undefined ? station.drn : ""
+              } `}
             </p>
           )}
         </div>
