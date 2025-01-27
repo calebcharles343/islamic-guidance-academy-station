@@ -6,21 +6,21 @@ import Student from "./Student";
 import TableModal from "../../ui/TableModal";
 import { StudentType } from "../../interfaces";
 import { BiSearch } from "react-icons/bi";
+import { BsThreeDotsVertical } from "react-icons/bs";
+// import { HiPencil, HiSquare2Stack, HiTrash } from "react-icons/hi2";
 
-const Students: React.FC = () => {
+const AdminStudents: React.FC = () => {
   const { data: students, isLoading } = useStudents();
-
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredStudents, setFilteredStudents] = useState<StudentType[]>([]);
   const [selectedStudent, setSelectedStudent] = useState<StudentType | null>(
     null
   );
 
-  // console.log(students?.data[0].fileNumber);
-  // console.log(students?.data[0].mrn);
-  // console.log(students?.data[0].phone);
-  // console.log(students?.data[0].bvn);
-  // console.log(students?.data[0].nin);
+  // State to manage row-specific action visibility
+  const [actionStates, setActionStates] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
   useEffect(() => {
     if (students?.data) {
@@ -28,8 +28,7 @@ const Students: React.FC = () => {
       const filtered = students.data.filter(
         (student: StudentType) =>
           student.fileNumber.toLowerCase().includes(term) ||
-          student.name.toLowerCase().includes(term) ||
-          // student.mrn.toLowerCase().includes(term) ||
+          student.mrn.toLowerCase().includes(term) ||
           student.phone.toLowerCase().includes(term) ||
           student.bvn.toLowerCase().includes(term) ||
           student.nin.toLowerCase().includes(term)
@@ -52,6 +51,13 @@ const Students: React.FC = () => {
     setSelectedStudent(null);
   };
 
+  const handleAction = (id: string) => {
+    setActionStates((prev) => ({
+      ...prev,
+      [id]: !prev[id], // Toggle the action state for the specific student
+    }));
+  };
+
   if (isLoading) {
     return (
       <div className="relative flex items-center justify-center bg-black bg-opacity-20 backdrop-blur-sm w-full h-screen">
@@ -63,7 +69,6 @@ const Students: React.FC = () => {
   return (
     <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2">
       <span className="text-base md:text-lg font-bold text-gray-200">
-        {" "}
         SEARCH
       </span>
 
@@ -85,10 +90,10 @@ const Students: React.FC = () => {
       <div className="w-full md:w-[600px] flex flex-col items-center  px-2">
         <Table columns="">
           <Table.Header>
-            <div className=" h-full text-xs  md:text-base border-r border-gray-800 px-2 py-1">
+            <div className="h-full text-xs md:text-base border-r border-gray-800 px-2 py-1">
               s/N
             </div>
-            <div className="h-full r text-xs  md:text-base border-r border-gray-800 px-2 py-1 ">
+            <div className="h-full text-xs md:text-base border-r border-gray-800 px-2 py-1">
               Name
             </div>
 
@@ -106,18 +111,24 @@ const Students: React.FC = () => {
                     {student.sequentialId}
                   </div>
 
-                  <div className=" text-xs md:text-base border-r text-white px-2 py-1 ">
+                  <div className="text-xs md:text-base border-r text-white px-2 py-1">
                     {student.name}
                   </div>
 
-                  <div className=" text-[8px] flex justify-center px-2 py-1">
-                    <button
-                      className=" text-white bg-blue-500 border border-white hover:bg-blue-600 px-1 rounded-md"
-                      type="button"
-                      onClick={() => handleViewClick(student)}
-                    >
-                      View
-                    </button>
+                  <div className="text-white flex items-center justify-center px-2 py-1">
+                    {actionStates[student.id] ? (
+                      <button
+                        className="text-[8px] bg-blue-500 border border-white hover:bg-blue-600 px-1 rounded-md"
+                        type="button"
+                        onClick={() => handleViewClick(student)}
+                      >
+                        View
+                      </button>
+                    ) : (
+                      <BsThreeDotsVertical
+                        onClick={() => handleAction(student.id)}
+                      />
+                    )}
                   </div>
                 </Table.Row>
               )}
@@ -137,4 +148,4 @@ const Students: React.FC = () => {
   );
 };
 
-export default Students;
+export default AdminStudents;

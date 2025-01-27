@@ -80,3 +80,17 @@ export const verifiedStudents = async () => {
   );
   return response.data;
 };
+
+export const updateStudent = async (id: string, data: any) => {
+  const response = await axiosInstance.patch<VerifiedStudentsType>(
+    `/verifications/${id}`,
+    data
+  );
+  return response.data;
+};
+export const deleteStudent = async (id: string) => {
+  const response = await axiosInstance.delete<VerifiedStudentsType>(
+    `/verifications/${id}`
+  );
+  return response.data;
+};

@@ -103,7 +103,7 @@ const VerificationForm: React.FC = () => {
       </div>
 
       <div className="py-10 flex flex-col items-center justify-center">
-        <div className=" mb-4 flex flex-col items-center">
+        <div className=" mb-4 flex flex-col items-center gap-2">
           <h1 className="text-sm md:text-lg  font-extrabold">
             ISLAMIC GUIDANCE ACADAMY STATION
           </h1>

@@ -12,11 +12,11 @@ const Student: React.FC<StudentProps> = ({ student }) => {
   // }
   return (
     <div
-      className="w-full  mxx-w-[400px] bg-white shadow-lg rounded-lg overflow-hidden"
+      className="w-full  md:min-w-[400px] bg-white shadow-lg rounded-lg overflow-hidden"
       style={{ fontFamily: "Roboto", letterSpacing: "0.6px" }}
     >
       <img
-        className="w-full h-48 object-contain"
+        className="w-full h-36 md:h-44 object-contain"
         src={student.photo}
         alt={`${student.name}'s photo`}
       />

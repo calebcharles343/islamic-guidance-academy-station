@@ -14,6 +14,7 @@ import { Toaster } from "react-hot-toast";
 import AuthGuard from "./features/authenticaton/AuthGuard";
 import VerificationForm from "./features/authenticaton/VerificationForm";
 import StudentsTable from "./pages/StudentsTable";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
   },
   { path: "login", element: <Login /> },
   { path: "secret-001/signup", element: <SignupForm /> },
+  { path: "secret-001/admin", element: <Admin /> },
 
   { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
 ]);

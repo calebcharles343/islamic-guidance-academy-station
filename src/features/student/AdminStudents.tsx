@@ -2,25 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useStudents } from "./useStudents";
 import SpinnerMini from "../../ui/SpinnerMini";
 import Table from "../../ui/Table";
-import Student from "./Student";
+
 import TableModal from "../../ui/TableModal";
 import { StudentType } from "../../interfaces";
 import { BiSearch } from "react-icons/bi";
+import AdminStudent from "./AdminStudent";
 
 const Students: React.FC = () => {
   const { data: students, isLoading } = useStudents();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [studentId, setStudentId] = useState<string | null>("");
+  const [viewStudent, setViewStudent] = useState<StudentType | null>(null);
   const [filteredStudents, setFilteredStudents] = useState<StudentType[]>([]);
-  const [selectedStudent, setSelectedStudent] = useState<StudentType | null>(
-    null
-  );
-
-  // console.log(students?.data[0].fileNumber);
-  // console.log(students?.data[0].mrn);
-  // console.log(students?.data[0].phone);
-  // console.log(students?.data[0].bvn);
-  // console.log(students?.data[0].nin);
 
   useEffect(() => {
     if (students?.data) {
@@ -38,18 +32,27 @@ const Students: React.FC = () => {
     }
   }, [searchTerm, students]);
 
+  useEffect(() => {
+    if (studentId) {
+      const currentStudent = filteredStudents.find(
+        (student) => student.id === studentId
+      );
+      setViewStudent(currentStudent || null);
+    }
+  }, [studentId, filteredStudents]);
+
   // Assign sequential IDs
   const studentsWithIds = filteredStudents.map((student, index) => ({
     ...student,
     sequentialId: index + 1,
   }));
 
-  const handleViewClick = (student: StudentType) => {
-    setSelectedStudent(student);
+  const handleViewClick = (id: string) => {
+    setStudentId(id);
   };
 
   const handleCloseModal = () => {
-    setSelectedStudent(null);
+    setStudentId(null);
   };
 
   if (isLoading) {
@@ -59,7 +62,6 @@ const Students: React.FC = () => {
       </div>
     );
   }
-
   return (
     <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2">
       <span className="text-base md:text-lg font-bold text-gray-200">
@@ -114,7 +116,7 @@ const Students: React.FC = () => {
                     <button
                       className=" text-white bg-blue-500 border border-white hover:bg-blue-600 px-1 rounded-md"
                       type="button"
-                      onClick={() => handleViewClick(student)}
+                      onClick={() => handleViewClick(student.id)}
                     >
                       View
                     </button>
@@ -126,10 +128,10 @@ const Students: React.FC = () => {
         </Table>
       </div>
 
-      {selectedStudent && (
+      {studentId && (
         <TableModal onClose={handleCloseModal}>
-          <div className="max-h-[600px] mt-2 overflow-y-scroll">
-            <Student student={selectedStudent} />
+          <div className="max-h-[600px] mt-2 overflow-y-scroll px-2 ">
+            <AdminStudent student={viewStudent} setStudentId={setStudentId} />
           </div>
         </TableModal>
       )}

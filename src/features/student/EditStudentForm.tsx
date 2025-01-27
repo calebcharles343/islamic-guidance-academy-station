@@ -1,37 +1,45 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import SpinnerMini from "../../ui/SpinnerMini";
-import { FormTypes } from "../../interfaces";
-import { useVerification } from "./useVerifacation";
+import { FormTypes, StudentType } from "../../interfaces";
 import toast from "react-hot-toast/headless";
-import { useLogout } from "./useLogout";
-import { BiLogOut } from "react-icons/bi";
+import { useUpdateStudent } from "./useUpdateStudent";
+// import { useLogout } from "./useLogout";
+// import { BiLogOut } from "react-icons/bi";
 
-const VerificationForm: React.FC = () => {
+interface EditVerificationFormProps {
+  student: StudentType;
+  setIsEdit: (value: boolean) => void;
+}
+
+const EditStudentForm: React.FC<EditVerificationFormProps> = ({
+  student,
+  setIsEdit,
+}) => {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState<string | null>(null);
 
   const [formData, setFormData] = useState<FormTypes>({
-    name: "",
-    mrn: "",
-    fileNumber: "",
-    dateOfBirth: "",
-    phone: "",
-    ethnicGroup: "",
-    stateOfOrigin: "",
-    residentialAddress: "",
-    occupation: "",
-    familyHouseName: "",
-    fhrn: "",
-    nin: "",
-    bvn: "",
+    name: student.name,
+    mrn: student.mrn,
+    fileNumber: student.fileNumber,
+    dateOfBirth: student.dateOfBirth,
+    phone: student.phone,
+    ethnicGroup: student.ethnicGroup,
+    stateOfOrigin: student.stateOfOrigin,
+    residentialAddress: student.residentialAddress,
+    occupation: student.occupation,
+    familyHouseName: student.familyHouseName,
+    fhrn: student.fhrn,
+    nin: student.nin,
+    bvn: student.bvn,
   });
 
   useEffect(() => {
     setFileInputState("");
   }, []);
 
-  const { verify, isPending } = useVerification();
+  const { updateStudent, isPending } = useUpdateStudent(student.id);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -72,42 +80,23 @@ const VerificationForm: React.FC = () => {
       photo: previewSource,
     };
 
-    verify(data as any);
+    updateStudent(data as any);
 
     setPreviewSource(null);
-  };
-
-  const { logout, isPending: isLoggingOut } = useLogout();
-
-  const handleLogout = async () => {
-    logout();
+    setIsEdit(false);
   };
 
   return (
     <div
-      className=" flex flex-col h-screen text-white  overflow-y-scroll md:px-4 pt-8 pb-16"
+      className=" flex flex-col h-screen text-white overflow-y-scroll mt-4 pb-4 "
       style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
     >
-      <div className="ml-2 md:ml-0">
-        {isLoggingOut ? (
-          <SpinnerMini />
-        ) : (
-          <button
-            className="flex items-center justify-center gap-2 mt-auto mb-0 text-gray-800 bg-gray-50 p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
-            onClick={handleLogout}
-          >
-            <BiLogOut />
-            Log out
-          </button>
-        )}
-      </div>
-
       <div className="py-10 flex flex-col items-center justify-center">
-        <div className=" mb-4 flex flex-col items-center">
+        <div className=" mb-4 flex flex-col items-center gap-2">
           <h1 className="text-sm md:text-lg  font-extrabold">
             ISLAMIC GUIDANCE ACADAMY STATION
           </h1>
-          <p>Verification</p>
+          <p>Update Verification</p>
         </div>
 
         <div className=" w-full md:w-[400px] flex items-center justify-center gap-2">
@@ -380,7 +369,7 @@ const VerificationForm: React.FC = () => {
                 className="w-full h-8 md:h-10 flex justify-center items-center bg-gray-800 text-white rounded-md shadow-md"
                 disabled={isPending}
               >
-                {isPending ? <SpinnerMini /> : "Submit"}
+                {isPending ? <SpinnerMini /> : "Update"}
               </button>
             </div>
           </form>
@@ -390,4 +379,4 @@ const VerificationForm: React.FC = () => {
   );
 };
 
-export default VerificationForm;
+export default EditStudentForm;
