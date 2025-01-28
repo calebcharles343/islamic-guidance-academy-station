@@ -12,6 +12,11 @@ interface EditVerificationFormProps {
   setIsEdit: (value: boolean) => void;
 }
 
+const stations = [
+  { id: "NGKW-1446-2401", name: "NGKW-1446-2401" },
+  { id: "NGOY-1446-2401", name: "NGOY-1446-2401" },
+];
+
 const EditStudentForm: React.FC<EditVerificationFormProps> = ({
   student,
   setIsEdit,
@@ -33,6 +38,7 @@ const EditStudentForm: React.FC<EditVerificationFormProps> = ({
     fhrn: student.fhrn,
     nin: student.nin,
     bvn: student.bvn,
+    station: student.station,
   });
 
   useEffect(() => {
@@ -361,6 +367,29 @@ const EditStudentForm: React.FC<EditVerificationFormProps> = ({
                     onChange={handleInputChange}
                     required
                   />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="station"
+                    className="block mb-1 font-bold text-gray-700"
+                  >
+                    Station
+                  </label>
+                  <select
+                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    id="station"
+                    value={formData.station}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    <option value="">Select a station</option>
+                    {stations.map((station) => (
+                      <option key={station.id} value={station.id}>
+                        {station.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
 

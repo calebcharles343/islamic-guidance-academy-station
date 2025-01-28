@@ -85,6 +85,7 @@ export interface FormTypes {
   fhrn: string;
   nin: string;
   bvn: string;
+  station?: string;
 }
 
 export interface VerifiedStudentsType {
