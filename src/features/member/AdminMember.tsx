@@ -1,18 +1,18 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { StudentType } from "../../interfaces";
+import { MemberType } from "../../interfaces";
 import { useStation } from "../authenticaton/useStation";
 import TableModal from "../../ui/TableModal";
-import EditVerificationForm from "./EditStudentForm";
+import EditMemberForm from "./EditMemberForm";
 import Swal from "sweetalert2";
-import { useDeleteStudent } from "./useDeleteStudent";
+import { useDeleteMember } from "./useDeleteMember";
 
-interface StudentProps {
-  student: StudentType | null;
-  setStudentId: Dispatch<SetStateAction<string | null>>;
+interface AdminMemberProps {
+  member: MemberType | null;
+  setMembertId: Dispatch<SetStateAction<string | null>>;
 }
 
-const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
-  const { data: station, isLoading } = useStation(student?.station_id!);
+const AdminMember: React.FC<AdminMemberProps> = ({ member, setMembertId }) => {
+  const { data: station, isLoading } = useStation(member?.station_id!);
 
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
@@ -20,9 +20,9 @@ const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
     setIsEdit(false);
   };
 
-  const { deleteStudent } = useDeleteStudent();
+  const { deleteMember } = useDeleteMember();
 
-  const handleDeleteStudent = (e: React.MouseEvent) => {
+  const handleDeleteMember = (e: React.MouseEvent) => {
     e.stopPropagation();
 
     Swal.fire({
@@ -35,14 +35,16 @@ const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
       customClass: { popup: "custom-style" },
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteStudent(student?.id!);
+        deleteMember(member?.id!);
         setIsEdit(false);
-        if (setStudentId) {
-          setStudentId(null);
+        if (setMembertId) {
+          setMembertId(null);
         }
       }
     });
   };
+
+  console.log(member);
 
   // }
   return (
@@ -54,8 +56,8 @@ const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
         >
           <img
             className="w-full h-36 md:h-44 object-contain"
-            src={student?.photo}
-            alt={`${student?.name}'s photo`}
+            src={member?.photo}
+            alt={`${member?.name}'s photo`}
           />
           <div
             className="p-4"
@@ -66,45 +68,45 @@ const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
             }}
           >
             <h2 className="text-center font-semibold text-base md:text-lg text-gray-800 mb-2">
-              {student?.name}
+              {member?.name}
             </h2>
 
             <div className="flex flex-col gap-1">
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>MRN:</strong> {student?.mrn}
+                <strong>MRN:</strong> {member?.mrn}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>File Number:</strong> {student?.fileNumber}
+                <strong>File Number:</strong> {member?.fileNumber}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>Date of Birth:</strong> {student?.dateOfBirth}
+                <strong>Date of Birth:</strong> {member?.dateOfBirth}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>Phone:</strong> {student?.phone}
+                <strong>Phone:</strong> {member?.phone}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>Ethnic Group:</strong> {student?.ethnicGroup}
+                <strong>Ethnic Group:</strong> {member?.ethnicGroup}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>State of Origin:</strong> {student?.stateOfOrigin}
+                <strong>State of Origin:</strong> {member?.stateOfOrigin}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>Address:</strong> {student?.residentialAddress}
+                <strong>Address:</strong> {member?.residentialAddress}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>Occupation:</strong> {student?.occupation}
+                <strong>Occupation:</strong> {member?.occupation}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>Family House Name:</strong> {student?.familyHouseName}
+                <strong>Family House Name:</strong> {member?.familyHouseName}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>FHRN:</strong> {student?.fhrn}
+                <strong>FHRN:</strong> {member?.fhrn}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>NIN:</strong> {student?.nin}
+                <strong>NIN:</strong> {member?.nin}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>BVN:</strong> {student?.bvn}
+                <strong>BVN:</strong> {member?.bvn}
               </p>
               {isLoading ? (
                 <p> "loading station ..."</p>
@@ -127,7 +129,7 @@ const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
             </button>{" "}
             <button
               className="w-24 text-red-500 border border-red-500 p-1 rounded-md"
-              onClick={handleDeleteStudent}
+              onClick={handleDeleteMember}
             >
               Delete
             </button>
@@ -138,7 +140,7 @@ const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
       {isEdit && (
         <TableModal onClose={handleCloseModal}>
           <div className="scale-90">
-            <EditVerificationForm student={student!} setIsEdit={setIsEdit} />
+            <EditMemberForm member={member!} setIsEdit={setIsEdit} />
           </div>
         </TableModal>
       )}
@@ -146,4 +148,4 @@ const AdminStudent: React.FC<StudentProps> = ({ student, setStudentId }) => {
   );
 };
 
-export default AdminStudent;
+export default AdminMember;

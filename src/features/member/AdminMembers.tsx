@@ -1,58 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { useStudents } from "./useStudents";
+import { useMembers } from "./useMembers";
 import SpinnerMini from "../../ui/SpinnerMini";
 import Table from "../../ui/Table";
-
 import TableModal from "../../ui/TableModal";
-import { StudentType } from "../../interfaces";
+import { MemberType } from "../../interfaces";
 import { BiSearch } from "react-icons/bi";
-import AdminStudent from "./AdminStudent";
+import AdminMember from "./AdminMember";
 
-const Students: React.FC = () => {
-  const { data: students, isLoading } = useStudents();
+const AdminMembers: React.FC = () => {
+  const { data: members, isLoading } = useMembers();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [studentId, setStudentId] = useState<string | null>("");
-  const [viewStudent, setViewStudent] = useState<StudentType | null>(null);
-  const [filteredStudents, setFilteredStudents] = useState<StudentType[]>([]);
+  const [membertId, setMembertId] = useState<string | null>("");
+  const [viewMember, setViewMember] = useState<MemberType | null>(null);
+  const [filteredMembers, setFilteredMembers] = useState<MemberType[]>([]);
 
   useEffect(() => {
-    if (students?.data) {
+    if (members?.data) {
       const term = searchTerm.toLowerCase();
-      const filtered = students.data.filter(
-        (student: StudentType) =>
-          student.fileNumber.toLowerCase().includes(term) ||
-          student.name.toLowerCase().includes(term) ||
-          // student.mrn.toLowerCase().includes(term) ||
-          student.phone.toLowerCase().includes(term) ||
-          student.bvn.toLowerCase().includes(term) ||
-          student.nin.toLowerCase().includes(term)
+      const filtered = members.data.filter(
+        (member: MemberType) =>
+          member.fileNumber.toLowerCase().includes(term) ||
+          member.name.toLowerCase().includes(term) ||
+          member.phone.toLowerCase().includes(term) ||
+          member.bvn.toLowerCase().includes(term) ||
+          member.nin.toLowerCase().includes(term)
       );
-      setFilteredStudents(filtered);
+      setFilteredMembers(filtered);
     }
-  }, [searchTerm, students]);
+  }, [searchTerm, members]);
 
   useEffect(() => {
-    if (studentId) {
-      const currentStudent = filteredStudents.find(
-        (student) => student.id === studentId
+    if (membertId) {
+      const currentMember = filteredMembers.find(
+        (member) => member.id === membertId
       );
-      setViewStudent(currentStudent || null);
+      setViewMember(currentMember || null);
     }
-  }, [studentId, filteredStudents]);
+  }, [membertId, filteredMembers]);
 
   // Assign sequential IDs
-  const studentsWithIds = filteredStudents.map((student, index) => ({
-    ...student,
+  const membersWithIds = filteredMembers.map((member, index) => ({
+    ...member,
     sequentialId: index + 1,
   }));
 
   const handleViewClick = (id: string) => {
-    setStudentId(id);
+    setMembertId(id);
   };
 
   const handleCloseModal = () => {
-    setStudentId(null);
+    setMembertId(null);
   };
 
   if (isLoading) {
@@ -100,23 +98,23 @@ const Students: React.FC = () => {
           </Table.Header>
           <div className="h-[500px] overflow-y-scroll">
             <Table.Body
-              data={studentsWithIds}
-              render={(student: StudentType) => (
-                <Table.Row key={student.id}>
+              data={membersWithIds}
+              render={(member: MemberType) => (
+                <Table.Row key={member.id}>
                   {/* Sequential ID */}
                   <div className="border-r text-white text-xs md:text-base font-bold px-2 py-1">
-                    {student.sequentialId}
+                    {member.sequentialId}
                   </div>
 
                   <div className=" text-xs md:text-base border-r text-white px-2 py-1 ">
-                    {student.name}
+                    {member.name}
                   </div>
 
                   <div className=" text-[8px] flex justify-center px-2 py-1">
                     <button
                       className=" text-white bg-blue-500 border border-white hover:bg-blue-600 px-1 rounded-md"
                       type="button"
-                      onClick={() => handleViewClick(student.id)}
+                      onClick={() => handleViewClick(member.id)}
                     >
                       View
                     </button>
@@ -128,10 +126,10 @@ const Students: React.FC = () => {
         </Table>
       </div>
 
-      {studentId && (
+      {membertId && (
         <TableModal onClose={handleCloseModal}>
           <div className="max-h-[600px] mt-2 overflow-y-scroll px-2 ">
-            <AdminStudent student={viewStudent} setStudentId={setStudentId} />
+            <AdminMember member={viewMember} setMembertId={setMembertId} />
           </div>
         </TableModal>
       )}
@@ -139,4 +137,4 @@ const Students: React.FC = () => {
   );
 };
 
-export default Students;
+export default AdminMembers;

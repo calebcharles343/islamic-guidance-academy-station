@@ -1,13 +1,13 @@
 import React from "react";
-import { StudentType } from "../../interfaces";
+import { MemberType } from "../../interfaces";
 import { useStation } from "../authenticaton/useStation";
 
-interface StudentProps {
-  student: StudentType;
+interface memberProps {
+  member: MemberType;
 }
 
-const Student: React.FC<StudentProps> = ({ student }) => {
-  const { data: station, isLoading } = useStation(student.station_id!);
+const Member: React.FC<memberProps> = ({ member }) => {
+  const { data: station, isLoading } = useStation(member.station_id!);
 
   // }
   return (
@@ -17,8 +17,8 @@ const Student: React.FC<StudentProps> = ({ student }) => {
     >
       <img
         className="w-full h-36 md:h-44 object-contain"
-        src={student.photo}
-        alt={`${student.name}'s photo`}
+        src={member.photo}
+        alt={`${member.name}'s photo`}
       />
       <div
         className="p-4"
@@ -29,45 +29,45 @@ const Student: React.FC<StudentProps> = ({ student }) => {
         }}
       >
         <h2 className="text-center font-semibold text-base md:text-lg text-gray-800 mb-2">
-          {student.name}
+          {member.name}
         </h2>
 
         <div className="flex flex-col gap-1">
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>MRN:</strong> {student.mrn}
+            <strong>MRN:</strong> {member.mrn}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>File Number:</strong> {student.fileNumber}
+            <strong>File Number:</strong> {member.fileNumber}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>Date of Birth:</strong> {student.dateOfBirth}
+            <strong>Date of Birth:</strong> {member.dateOfBirth}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>Phone:</strong> {student.phone}
+            <strong>Phone:</strong> {member.phone}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>Ethnic Group:</strong> {student.ethnicGroup}
+            <strong>Ethnic Group:</strong> {member.ethnicGroup}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>State of Origin:</strong> {student.stateOfOrigin}
+            <strong>State of Origin:</strong> {member.stateOfOrigin}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>Address:</strong> {student.residentialAddress}
+            <strong>Address:</strong> {member.residentialAddress}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>Occupation:</strong> {student.occupation}
+            <strong>Occupation:</strong> {member.occupation}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>Family House Name:</strong> {student.familyHouseName}
+            <strong>Family House Name:</strong> {member.familyHouseName}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>FHRN:</strong> {student.fhrn}
+            <strong>FHRN:</strong> {member.fhrn}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>NIN:</strong> {student.nin}
+            <strong>NIN:</strong> {member.nin}
           </p>
           <p className="text-xs md:text-sm text-gray-600">
-            <strong>BVN:</strong> {student.bvn}
+            <strong>BVN:</strong> {member.bvn}
           </p>
           {isLoading ? (
             <p> "loading station ..."</p>
@@ -85,4 +85,4 @@ const Student: React.FC<StudentProps> = ({ student }) => {
   );
 };
 
-export default Student;
+export default Member;

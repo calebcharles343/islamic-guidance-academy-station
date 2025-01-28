@@ -1,9 +1,9 @@
-import AdminStudents from "../features/student/AdminStudents";
+import AdminMembers from "../features/member/AdminMembers";
 
 const Admin: React.FC = () => {
   return (
     <div>
-      <AdminStudents />
+      <AdminMembers />
     </div>
   );
 };

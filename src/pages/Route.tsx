@@ -15,7 +15,7 @@ export default function Route() {
       <div className="flex flex-col items-center gap-2">
         <div className="flex flex-col items-center gap-4">
           <NavLink
-            to="/students-table"
+            to="/members-table"
             className="hover:bg-slate-800 border px-4 py-2"
           >
             <span className="">Verified Members</span>
@@ -25,7 +25,7 @@ export default function Route() {
             className="hover:bg-slate-800 border px-4 py-2"
             href="https://islamic-guidance-academy-pzvs.vercel.app/register"
           >
-            Proceed to student registration
+            Proceed to Member registration
           </a>
 
           <NavLink

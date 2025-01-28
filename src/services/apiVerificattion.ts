@@ -1,7 +1,7 @@
 import axios from "axios";
 import { localStorageUser } from "../utils/localStorageUser";
 
-import { VerifiedStudentsType } from "../interfaces";
+import { VerifiedMembersType } from "../interfaces";
 import { baseUrl } from "./baseUrl";
 
 const url = baseUrl();
@@ -74,22 +74,22 @@ export const verification = async (data: any) => {
   return response.data;
 };
 
-export const verifiedStudents = async () => {
-  const response = await axiosInstance.get<VerifiedStudentsType>(
+export const verifiedMembers = async () => {
+  const response = await axiosInstance.get<VerifiedMembersType>(
     `/verifications`
   );
   return response.data;
 };
 
-export const updateStudent = async (id: string, data: any) => {
-  const response = await axiosInstance.patch<VerifiedStudentsType>(
+export const updateMember = async (id: string, data: any) => {
+  const response = await axiosInstance.patch<VerifiedMembersType>(
     `/verifications/${id}`,
     data
   );
   return response.data;
 };
-export const deleteStudent = async (id: string) => {
-  const response = await axiosInstance.delete<VerifiedStudentsType>(
+export const deleteMember = async (id: string) => {
+  const response = await axiosInstance.delete<VerifiedMembersType>(
     `/verifications/${id}`
   );
   return response.data;

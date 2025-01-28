@@ -1,45 +1,45 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import SpinnerMini from "../../ui/SpinnerMini";
-import { FormTypes, StudentType } from "../../interfaces";
+import { FormTypes, MemberType } from "../../interfaces";
 import toast from "react-hot-toast/headless";
-import { useUpdateStudent } from "./useUpdateStudent";
+import { useUpdateMember } from "./useUpdateMember";
 // import { useLogout } from "./useLogout";
 // import { BiLogOut } from "react-icons/bi";
 
 interface EditVerificationFormProps {
-  student: StudentType;
+  member: MemberType;
   setIsEdit: (value: boolean) => void;
 }
 
-const EditStudentForm: React.FC<EditVerificationFormProps> = ({
-  student,
+const EditMemberForm: React.FC<EditVerificationFormProps> = ({
+  member,
   setIsEdit,
 }) => {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState<string | null>(null);
 
   const [formData, setFormData] = useState<FormTypes>({
-    name: student.name,
-    mrn: student.mrn,
-    fileNumber: student.fileNumber,
-    dateOfBirth: student.dateOfBirth,
-    phone: student.phone,
-    ethnicGroup: student.ethnicGroup,
-    stateOfOrigin: student.stateOfOrigin,
-    residentialAddress: student.residentialAddress,
-    occupation: student.occupation,
-    familyHouseName: student.familyHouseName,
-    fhrn: student.fhrn,
-    nin: student.nin,
-    bvn: student.bvn,
+    name: member.name,
+    mrn: member.mrn,
+    fileNumber: member.fileNumber,
+    dateOfBirth: member.dateOfBirth,
+    phone: member.phone,
+    ethnicGroup: member.ethnicGroup,
+    stateOfOrigin: member.stateOfOrigin,
+    residentialAddress: member.residentialAddress,
+    occupation: member.occupation,
+    familyHouseName: member.familyHouseName,
+    fhrn: member.fhrn,
+    nin: member.nin,
+    bvn: member.bvn,
   });
 
   useEffect(() => {
     setFileInputState("");
   }, []);
 
-  const { updateStudent, isPending } = useUpdateStudent(student.id);
+  const { updateMember, isPending } = useUpdateMember(member.id);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -80,7 +80,7 @@ const EditStudentForm: React.FC<EditVerificationFormProps> = ({
       photo: previewSource,
     };
 
-    updateStudent(data as any);
+    updateMember(data as any);
 
     setPreviewSource(null);
     setIsEdit(false);
@@ -379,4 +379,4 @@ const EditStudentForm: React.FC<EditVerificationFormProps> = ({
   );
 };
 
-export default EditStudentForm;
+export default EditMemberForm;

@@ -88,14 +88,14 @@ export interface FormTypes {
   station?: string;
 }
 
-export interface VerifiedStudentsType {
+export interface VerifiedMembersType {
   status: number;
   message: string;
   amount: number;
-  data: StudentType[];
+  data: MemberType[];
 }
 
-export interface StudentType {
+export interface MemberType {
   name: string;
   mrn: string;
   fileNumber: string;
