@@ -51,7 +51,7 @@ const router = createBrowserRouter([
   },
   { path: "login", element: <Login /> },
   { path: "secret-001/signup", element: <SignupForm /> },
-  { path: "secret-001/admin", element: <Admin /> },
+  { path: "secret-001/admin-members", element: <Admin /> },
 
   { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
 ]);
