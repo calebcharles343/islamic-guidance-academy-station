@@ -46,7 +46,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "Members-table",
+    path: "members",
     element: <MembersTable />,
   },
   { path: "login", element: <Login /> },
