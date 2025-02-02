@@ -98,18 +98,18 @@ const AdminStations: React.FC = () => {
           SEARCH
         </span>
 
-        <div className="flex items-center w-full max-w-[260px] md:max-w-[275px] mb-2  md:mb-4 gap-1 md:gap-2">
+        <div className="flex items-center w-full h-10 bg-white max-w-[260px] md:max-w-[275px] mb-2  md:mb-4  rounded-lg">
           <div className="flex items-center text-gray-200 ">
-            <span className="border p-1">
-              <BiSearch className="w-4 h-4 md:w-6 md:h-6" />
+            <span className="text-gray-500 p-1 rounded-lg">
+              <BiSearch className="w-4 h-4 md:w-6" />
             </span>
           </div>
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-[11px]  placeholder:text-gray-600"
-            placeholder="File Number, name, email, DRN or Phone"
+            className="border w-full h-full pb-1 px-2  rounded-md placeholder:text-[11px]  placeholder:text-gray-600"
+            placeholder="File Number, BVN, NIN, MRN or Phone"
           />
         </div>
 
