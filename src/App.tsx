@@ -7,7 +7,7 @@ import {
 import PageNotFound from "./pages/PageNotFound";
 import Home from "./pages/Home";
 import AppLayout from "./ui/AppLayout";
-import Login from "./features/authenticaton/LoginForm";
+import LoginForm from "./features/authenticaton/LoginForm";
 import SignupForm from "./features/authenticaton/SignupForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
@@ -15,6 +15,9 @@ import AuthGuard from "./features/authenticaton/AuthGuard";
 import VerificationForm from "./features/authenticaton/VerificationForm";
 import MembersTable from "./pages/MembersTable";
 import Admin from "./pages/Admin";
+import AdminLoginForm from "./features/authenticaton/AdminLoginForm";
+import AdminAuthGuard from "./features/authenticaton/AdminAuthGuard";
+import AdminHome from "./pages/AdminHome";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,9 +52,32 @@ const router = createBrowserRouter([
     path: "members",
     element: <MembersTable />,
   },
-  { path: "login", element: <Login /> },
-  { path: "secret-001/signup", element: <SignupForm /> },
-  { path: "secret-001/admin-members", element: <Admin /> },
+  { path: "login", element: <LoginForm /> },
+  { path: "admin-login", element: <AdminLoginForm /> },
+  {
+    path: "admin-home",
+    element: (
+      <AdminAuthGuard>
+        <AdminHome />
+      </AdminAuthGuard>
+    ),
+  },
+  {
+    path: "secret-001/signup",
+    element: (
+      <AdminAuthGuard>
+        <SignupForm />
+      </AdminAuthGuard>
+    ),
+  },
+  {
+    path: "secret-001/admin-members",
+    element: (
+      <AdminAuthGuard>
+        <Admin />
+      </AdminAuthGuard>
+    ),
+  },
 
   { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
 ]);
