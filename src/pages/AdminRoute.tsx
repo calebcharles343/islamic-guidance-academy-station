@@ -18,11 +18,11 @@ export default function AdminRoute() {
             to="/secret-001/signup"
             className="hover:bg-slate-800 border px-4 py-2"
           >
-            <span className="">Station Signup</span>
+            <span className="">Station Sign Up</span>
           </NavLink>
 
           <NavLink
-            to="/secret-001/admin-members"
+            to="//secret-001/admin-members"
             className="hover:bg-slate-800 border px-4 py-2"
           >
             <span className="">Admin Members</span>
