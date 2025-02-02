@@ -26,8 +26,10 @@ const AdminStations: React.FC = () => {
       const term = searchTerm.toLowerCase();
       const filtered = stations.filter(
         (station: SignupTypes) =>
-          station.fileNumber?.includes(term) ||
           station.name?.toLowerCase().includes(term) ||
+          station.email?.toLowerCase().includes(term) ||
+          station.fileNumber?.includes(term) ||
+          station.drn?.includes(term) ||
           station.phone?.includes(term)
       );
       setFilteredStations(filtered);
@@ -69,12 +71,13 @@ const AdminStations: React.FC = () => {
     );
   }
   return (
-    <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2 md:px-4 gap-8">
+    // <div className="border bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2 md:px-4 gap-8">
+    <div className="bg-blue-500 h-screen py-8 px-2 md:px-4 gap-8">
       {isPending ? (
         <SpinnerMini />
       ) : (
         <button
-          className="flex items-center self-start justify-center gap-2 mt-auto mb-0 text-gray-800 bg-gray-50 p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
+          className="flex items-center self-start justify-center gap-2 mt-auto mb-8 text-gray-800 bg-gray-50 p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
           onClick={handleLogout}
         >
           <BiLogOut />
@@ -83,6 +86,13 @@ const AdminStations: React.FC = () => {
       )}
 
       <div className="flex flex-col items-center">
+        <span
+          className="text-xl font-bold text-white text-center mb-4 border-2 py-2 px-4 rounded-lg"
+          style={{ letterSpacing: "4px" }}
+        >
+          STATION
+        </span>
+
         <span className="text-base md:text-lg font-bold text-gray-200">
           {" "}
           SEARCH
@@ -99,7 +109,7 @@ const AdminStations: React.FC = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-[11px]  placeholder:text-gray-600"
-            placeholder="File Number, BVN, NIN, MRN or Phone"
+            placeholder="File Number, name, email, DRN or Phone"
           />
         </div>
 
@@ -117,7 +127,7 @@ const AdminStations: React.FC = () => {
                 Actions
               </div>
             </Table.Header>
-            <div className="h-[500px] overflow-y-scroll">
+            <div className="max-h-[500px] overflow-y-scroll">
               <Table.Body
                 data={stationsWithIds}
                 render={(station: SignupTypes) => (

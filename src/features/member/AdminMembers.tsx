@@ -82,6 +82,13 @@ const AdminMembers: React.FC = () => {
       )}
 
       <div className="flex flex-col items-center">
+        <span
+          className="text-xl font-bold text-white text-center mb-4 border-2 py-2 px-4 rounded-lg"
+          style={{ letterSpacing: "4px" }}
+        >
+          ADMIN MEMBERS
+        </span>
+
         <span className="text-base md:text-lg font-bold text-gray-200">
           {" "}
           SEARCH

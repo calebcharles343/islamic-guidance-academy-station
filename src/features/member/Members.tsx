@@ -4,21 +4,23 @@ import SpinnerMini from "../../ui/SpinnerMini";
 import Table from "../../ui/Table";
 import Member from "./Member";
 import TableModal from "../../ui/TableModal";
-import { MemberType } from "../../interfaces";
+import { Verification } from "../../interfaces";
 import { BiSearch } from "react-icons/bi";
 
 const Members: React.FC = () => {
   const { data: members, isLoading } = useMembers();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filteredMembers, setFilteredMembers] = useState<MemberType[]>([]);
-  const [selectedMember, setSelectedMember] = useState<MemberType | null>(null);
+  const [filteredMembers, setFilteredMembers] = useState<Verification[]>([]);
+  const [selectedMember, setSelectedMember] = useState<Verification | null>(
+    null
+  );
 
   useEffect(() => {
     if (members?.data) {
       const term = searchTerm.toLowerCase();
       const filtered = members.data.filter(
-        (member: MemberType) =>
+        (member: Verification) =>
           member.fileNumber.toLowerCase().includes(term) ||
           member.name.toLowerCase().includes(term) ||
           // member.mrn.toLowerCase().includes(term) ||
@@ -36,7 +38,7 @@ const Members: React.FC = () => {
     sequentialId: index + 1,
   }));
 
-  const handleViewClick = (member: MemberType) => {
+  const handleViewClick = (member: Verification) => {
     setSelectedMember(member);
   };
 
@@ -54,6 +56,13 @@ const Members: React.FC = () => {
 
   return (
     <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2">
+      <span
+        className="text-xl font-bold text-white text-center mb-4 border-2 py-2 px-4 rounded-lg"
+        style={{ letterSpacing: "4px" }}
+      >
+        MEMBERS
+      </span>
+
       <span className="text-base md:text-lg font-bold text-gray-200">
         {" "}
         SEARCH
@@ -91,7 +100,7 @@ const Members: React.FC = () => {
           <div className="h-[500px] overflow-y-scroll">
             <Table.Body
               data={membersWithIds}
-              render={(member: MemberType) => (
+              render={(member: Verification) => (
                 <Table.Row key={member.id}>
                   {/* Sequential ID */}
                   <div className="border-r text-white text-xs md:text-base font-bold px-2 py-1">

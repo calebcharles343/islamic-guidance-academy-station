@@ -75,7 +75,7 @@ const SignupForm: React.FC = () => {
           </button>
         )}
 
-        <div>
+        <div className="flex flex-col items-center w-full ">
           <div className=" mb-4 flex flex-col items-center">
             <h1 className="text-sm md:text-lg  font-extrabold">
               ISLAMIC GUIDANCE ACADAMY STATION
@@ -86,7 +86,7 @@ const SignupForm: React.FC = () => {
           <div className="w-full md:w-[400px] flex items-center justify-center">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full bg-white bg-opacity-90 p-6 rounded-md shadow-xl backdrop-blur-lg mx-4 md:mx-0"
+              className="w-full flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10  bg-white bg-opacity-90 p-6 rounded-md shadow-xl backdrop-blur-lg md:mx-0"
             >
               <div className="flex flex-col w-full gap-4">
                 <div>

@@ -1,9 +1,9 @@
 import React from "react";
-import { MemberType } from "../../interfaces";
+import { Verification } from "../../interfaces";
 import { useStation } from "../station/useStation";
 
 interface memberProps {
-  member: MemberType;
+  member: Verification;
 }
 
 const Member: React.FC<memberProps> = ({ member }) => {

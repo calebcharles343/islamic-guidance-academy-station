@@ -85,6 +85,9 @@ const AdminStation: React.FC<AdminStationProps> = ({
                 <strong>NAME:</strong> {station?.name}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
+                <strong>Email:</strong> {station?.email}
+              </p>
+              <p className="text-xs md:text-sm text-gray-600">
                 <strong>DRN:</strong> {station?.drn}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
@@ -96,7 +99,7 @@ const AdminStation: React.FC<AdminStationProps> = ({
 
               {station && (
                 <p className="text-xs md:text-sm text-gray-600">
-                  <strong>Jioned On:</strong> {dateformat(station?.createdAt!)}
+                  <strong>Joinned On:</strong> {dateformat(station?.createdAt!)}
                 </p>
               )}
             </div>

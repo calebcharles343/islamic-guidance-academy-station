@@ -44,8 +44,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    console.log(formData, "Form Data");
-
     updateStation(formData);
     setIsEdit(false);
   };
@@ -60,8 +58,8 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
       style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
     >
       <div className="py-10 flex flex-col items-center justify-center gap-8">
-        <div>
-          <div className=" mb-4 flex flex-col items-center">
+        <div className=" w-full">
+          <div className=" mb-2 flex flex-col items-center gap-4">
             <h1 className="text-sm md:text-lg  font-extrabold">
               ISLAMIC GUIDANCE ACADAMY STATION
             </h1>
@@ -71,7 +69,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
           <div className="w-full md:w-[400px] flex items-center justify-center">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full bg-white bg-opacity-90 p-6 rounded-md shadow-xl backdrop-blur-lg mx-4 md:mx-0"
+              className="w-full flex flex-col items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10  bg-white bg-opacity-90 p-6 rounded-md shadow-xl backdrop-blur-lg md:mx-0"
             >
               <div className="flex flex-col w-full gap-4">
                 <div>
@@ -88,6 +86,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={handleInputChange}
+                    required
                   />
                 </div>
 
@@ -105,6 +104,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleInputChange}
+                    required
                   />
                 </div>
 
@@ -122,6 +122,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your username"
                     value={formData.userName}
                     onChange={handleInputChange}
+                    required
                   />
                 </div>
 
@@ -130,14 +131,14 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     htmlFor="station"
                     className="block mb-1 font-bold text-gray-700"
                   >
-                    Station : {station.station}
+                    Station : <span className="text-sm">{station.station}</span>
                   </label>
-
                   <select
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="station"
                     value={formData.station}
                     onChange={handleInputChange}
+                    required
                   >
                     <option value="">Select a station</option>
                     {stations.map((station) => (
@@ -162,6 +163,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your DRN"
                     value={formData.drn}
                     onChange={handleInputChange}
+                    required
                   />
                 </div>
 
@@ -179,6 +181,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your file number"
                     value={formData.fileNumber}
                     onChange={handleInputChange}
+                    required
                   />
                 </div>
                 <div>
@@ -196,6 +199,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     value={formData.phone}
                     onChange={handleInputChange}
                     pattern="\d{11}" // Enforces exactly 11 digits
+                    required
                   />
                 </div>
 
@@ -214,6 +218,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                       placeholder="Enter your password"
                       value={formData.password}
                       onChange={handleInputChange}
+                      required
                     />
                     <span
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -239,6 +244,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                       placeholder="Confirm your password"
                       value={formData.passwordConfirm}
                       onChange={handleInputChange}
+                      required
                     />
                     <span
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -255,7 +261,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 className="w-full h-8 md:h-10 flex justify-center items-center bg-gray-800 text-white rounded-md shadow-md"
                 disabled={isPending}
               >
-                {isPending ? <SpinnerMini /> : "Update"}
+                {isPending ? <SpinnerMini /> : "Sign up"}
               </button>
             </form>
           </div>
