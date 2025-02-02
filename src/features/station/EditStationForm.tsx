@@ -131,16 +131,18 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     htmlFor="station"
                     className="block mb-1 font-bold text-gray-700"
                   >
-                    Station : <span className="text-sm">{station.station}</span>
+                    Station
                   </label>
                   <select
                     className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="station"
                     value={formData.station}
                     onChange={handleInputChange}
-                    required
                   >
-                    <option value="">Select a station</option>
+                    <option value="">
+                      {" "}
+                      <span className="text-sm">Select a station</span>
+                    </option>
                     {stations.map((station) => (
                       <option key={station.id} value={station.id}>
                         {station.name}
@@ -163,7 +165,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your DRN"
                     value={formData.drn}
                     onChange={handleInputChange}
-                    required
                   />
                 </div>
 
@@ -181,7 +182,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your file number"
                     value={formData.fileNumber}
                     onChange={handleInputChange}
-                    required
                   />
                 </div>
                 <div>
@@ -218,7 +218,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                       placeholder="Enter your password"
                       value={formData.password}
                       onChange={handleInputChange}
-                      required
                     />
                     <span
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -244,7 +243,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                       placeholder="Confirm your password"
                       value={formData.passwordConfirm}
                       onChange={handleInputChange}
-                      required
                     />
                     <span
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -261,7 +259,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 className="w-full h-8 md:h-10 flex justify-center items-center bg-gray-800 text-white rounded-md shadow-md"
                 disabled={isPending}
               >
-                {isPending ? <SpinnerMini /> : "Sign up"}
+                {isPending ? <SpinnerMini /> : "Update"}
               </button>
             </form>
           </div>
