@@ -50,7 +50,7 @@ const AdminLoginForm: React.FC = () => {
       className="h-screen flex flex-col items-center justify-center bg-blue-500  text-white pt-16"
       style={{ fontFamily: "Roboto", letterSpacing: "0.8px" }}
     >
-      <div className=" mb-4 flex flex-col items-center">
+      <div className=" mb-2 flex flex-col items-center gap-4">
         <h1 className="text-sm md:text-lg font-extrabold">
           ISLAMIC GUIDANCE ACADAMY STATION
         </h1>

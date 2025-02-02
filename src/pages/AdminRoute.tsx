@@ -1,10 +1,10 @@
 import { BiLogOut } from "react-icons/bi";
-import { useLogout } from "../features/authenticaton/useLogout";
 import SpinnerMini from "../ui/SpinnerMini";
 import { NavLink } from "react-router-dom";
+import { useAdminLogout } from "../features/authenticaton/useAdminLogout";
 
 export default function AdminRoute() {
-  const { logout, isPending } = useLogout();
+  const { logout, isPending } = useAdminLogout();
 
   const handleLogout = async () => {
     logout();
