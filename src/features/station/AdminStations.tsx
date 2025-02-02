@@ -109,7 +109,7 @@ const AdminStations: React.FC = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="border w-full h-full pb-1 px-2  rounded-md placeholder:text-[11px]  placeholder:text-gray-600"
-            placeholder="File Number, BVN, NIN, MRN or Phone"
+            placeholder="File Number, name, email, DRN or Phone"
           />
         </div>
 
