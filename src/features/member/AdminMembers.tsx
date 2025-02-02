@@ -68,7 +68,7 @@ const AdminMembers: React.FC = () => {
     );
   }
   return (
-    <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2 md:px-4 gap-8">
+    <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2 md:px-4 gap-8 overflow-y-scroll">
       {isPending ? (
         <SpinnerMini />
       ) : (

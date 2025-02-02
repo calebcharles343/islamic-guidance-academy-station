@@ -55,7 +55,7 @@ const Members: React.FC = () => {
   }
 
   return (
-    <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2">
+    <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2 overflow-y-scroll">
       <span
         className="text-xl font-bold text-white text-center mb-4 border-2 py-2 px-4 rounded-lg"
         style={{ letterSpacing: "4px" }}
