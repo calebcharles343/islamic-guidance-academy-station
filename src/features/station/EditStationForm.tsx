@@ -46,10 +46,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
 
     console.log(formData, "Form Data");
 
-    // const data = {
-    //   data: formData,
-    // };
-
     updateStation(formData);
     setIsEdit(false);
   };
@@ -92,7 +88,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    required
                   />
                 </div>
 
@@ -110,7 +105,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    required
                   />
                 </div>
 
@@ -128,7 +122,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your username"
                     value={formData.userName}
                     onChange={handleInputChange}
-                    required
                   />
                 </div>
 
@@ -145,7 +138,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     id="station"
                     value={formData.station}
                     onChange={handleInputChange}
-                    required
                   >
                     <option value="">Select a station</option>
                     {stations.map((station) => (
@@ -170,7 +162,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your DRN"
                     value={formData.drn}
                     onChange={handleInputChange}
-                    required
                   />
                 </div>
 
@@ -188,7 +179,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     placeholder="Enter your file number"
                     value={formData.fileNumber}
                     onChange={handleInputChange}
-                    required
                   />
                 </div>
                 <div>
@@ -206,7 +196,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                     value={formData.phone}
                     onChange={handleInputChange}
                     pattern="\d{11}" // Enforces exactly 11 digits
-                    required
                   />
                 </div>
 
@@ -225,7 +214,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                       placeholder="Enter your password"
                       value={formData.password}
                       onChange={handleInputChange}
-                      required
                     />
                     <span
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -251,7 +239,6 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                       placeholder="Confirm your password"
                       value={formData.passwordConfirm}
                       onChange={handleInputChange}
-                      required
                     />
                     <span
                       className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
