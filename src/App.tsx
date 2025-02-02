@@ -19,7 +19,6 @@ import AdminLoginForm from "./features/authenticaton/AdminLoginForm";
 import AdminAuthGuard from "./features/authenticaton/AdminAuthGuard";
 import AdminHome from "./pages/AdminHome";
 import VerificationForm from "./features/member/VerificationForm";
-import AdminStation from "./features/station/AdminStation";
 import AdminStations from "./features/station/AdminStations";
 
 const queryClient = new QueryClient({

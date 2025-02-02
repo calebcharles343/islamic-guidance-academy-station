@@ -6,7 +6,7 @@ import { useState } from "react";
 import { updateMember as updateMemberApi } from "../../services/apiVerificattion";
 
 import toast from "react-hot-toast";
-import { MemberType } from "../../interfaces";
+import { Verification } from "../../interfaces";
 
 interface ErrorResponse {
   message: string;
@@ -25,7 +25,7 @@ export function useUpdateMember(id: string) {
     isPending,
     isError,
   } = useMutation({
-    mutationFn: (data: Partial<MemberType>) => updateMemberApi(id, data),
+    mutationFn: (data: Partial<Verification>) => updateMemberApi(id, data),
 
     onSuccess: (data) => {
       if (data.status === 200) {
