@@ -123,7 +123,7 @@ const AdminMembers: React.FC = () => {
                 Actions
               </div>
             </Table.Header>
-            <div className="h-[500px] overflow-y-scroll">
+            <div className="max-h-[400px] overflow-y-scroll">
               <Table.Body
                 data={membersWithIds}
                 render={(member: Verification) => (

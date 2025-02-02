@@ -97,7 +97,7 @@ const Members: React.FC = () => {
               Actions
             </div>
           </Table.Header>
-          <div className="h-[500px] overflow-y-scroll">
+          <div className="msx-h-[500px] overflow-y-scroll">
             <Table.Body
               data={membersWithIds}
               render={(member: Verification) => (
