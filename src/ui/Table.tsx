@@ -59,7 +59,12 @@ interface BodyProps {
 }
 
 const Body: FC<BodyProps> = ({ data, render }) => {
-  if (!data.length) return <Empty>No data to show at the moment</Empty>;
+  if (!data.length)
+    return (
+      <Empty>
+        <span className="text-white">No data to show at the moment</span>
+      </Empty>
+    );
   return <div>{data.map(render)}</div>;
 };
 
