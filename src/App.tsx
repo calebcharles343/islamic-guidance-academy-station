@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     element: <MembersTable />,
   },
   { path: "login", element: <LoginForm /> },
-  { path: "admin-login", element: <AdminLoginForm /> },
+  { path: "secret-001/admin-login", element: <AdminLoginForm /> },
   {
     path: "admin-home",
     element: (

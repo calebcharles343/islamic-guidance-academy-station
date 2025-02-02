@@ -10,7 +10,7 @@ const AdminAuthGuard: React.FC<AdminAuthGuardProps> = ({ children }) => {
   const authToken = Cookies.get("admin-jwt");
 
   if (!authToken) {
-    return <Navigate to="/admin-login" replace />;
+    return <Navigate to="/secret-001/admin-login" replace />;
   }
 
   return <>{children}</>;

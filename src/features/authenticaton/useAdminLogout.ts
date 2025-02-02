@@ -20,7 +20,7 @@ export function useAdminLogout() {
       localStorage.clear();
 
       // Redirect to the auth (login) page
-      navigate("admin-home", { replace: true });
+      navigate("/secret-001/admin-login", { replace: true });
     },
   });
 
