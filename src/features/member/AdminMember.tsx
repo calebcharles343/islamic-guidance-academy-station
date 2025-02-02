@@ -5,6 +5,7 @@ import TableModal from "../../ui/TableModal";
 import EditMemberForm from "./EditMemberForm";
 import Swal from "sweetalert2";
 import { useDeleteMember } from "./useDeleteMember";
+import { dateformat } from "../../utils/dateFormat";
 
 interface AdminMemberProps {
   member: MemberType | null;
@@ -44,14 +45,14 @@ const AdminMember: React.FC<AdminMemberProps> = ({ member, setMembertId }) => {
     });
   };
 
-  console.log(member);
+  // console.log(member?.createdAt);
 
   // }
   return (
     <>
       {!isEdit && (
         <div
-          className="w-full  bg-white shadow-lg rounded-lg overflow-hidden"
+          className="w-full  bg-white shadow-lg rounded-lg overflow-hidden pb-4"
           style={{ fontFamily: "Roboto", letterSpacing: "0.6px" }}
         >
           <img
@@ -116,6 +117,12 @@ const AdminMember: React.FC<AdminMemberProps> = ({ member, setMembertId }) => {
                   {` - ${station.station} - ${
                     station.drn !== undefined ? station.drn : ""
                   } `}
+                </p>
+              )}
+
+              {member && (
+                <p className="text-xs md:text-sm text-gray-600">
+                  <strong>Verified On:</strong> {dateformat(member?.createdAt!)}
                 </p>
               )}
             </div>
