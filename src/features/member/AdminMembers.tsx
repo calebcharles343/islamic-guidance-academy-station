@@ -68,12 +68,12 @@ const AdminMembers: React.FC = () => {
     );
   }
   return (
-    <div className="bg-blue-500 flex flex-col items-center w-full h-screen py-8 px-2 md:px-4 gap-8 overflow-y-scroll">
+    <div className="bg-blue-500 h-screen py-8 px-2 md:px-4 gap-8">
       {isPending ? (
         <SpinnerMini />
       ) : (
         <button
-          className="flex items-center self-start justify-center gap-2 mt-auto mb-0 text-gray-800 bg-gray-50 p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
+          className="flex items-center self-start justify-center gap-2 mt-auto mb-8 text-gray-800 bg-gray-50 p-2 rounded hover:bg-gray-800 hover:text-gray-50 transition-colors duration-200"
           onClick={handleLogout}
         >
           <BiLogOut />
@@ -94,17 +94,17 @@ const AdminMembers: React.FC = () => {
           SEARCH
         </span>
 
-        <div className="flex items-center w-full max-w-[260px] md:max-w-[275px] mb-2  md:mb-4 gap-1 md:gap-2">
+        <div className="flex items-center w-full h-10 bg-white max-w-[260px] md:max-w-[275px] mb-2  md:mb-4  rounded-lg">
           <div className="flex items-center text-gray-200 ">
-            <span className="border p-1">
-              <BiSearch className="w-4 h-4 md:w-6 md:h-6" />
+            <span className="text-gray-500 p-1 rounded-lg">
+              <BiSearch className="w-4 h-4 md:w-6" />
             </span>
           </div>
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full p-1 md:p-2 border border-gray-500 rounded-md placeholder:text-[11px]  placeholder:text-gray-600"
+            className="border w-full h-full pb-1 px-2  rounded-md placeholder:text-[11px]  placeholder:text-gray-600"
             placeholder="File Number, BVN, NIN, MRN or Phone"
           />
         </div>
