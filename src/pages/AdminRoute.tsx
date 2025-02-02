@@ -27,6 +27,12 @@ export default function AdminRoute() {
           >
             <span className="">Admin Members</span>
           </NavLink>
+          <NavLink
+            to="/secret-001/admin-stations"
+            className="hover:bg-slate-800 border px-4 py-2"
+          >
+            <span className="">Admin Stations</span>
+          </NavLink>
         </div>
 
         <p> Or</p>

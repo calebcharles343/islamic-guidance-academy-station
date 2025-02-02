@@ -10,8 +10,8 @@ export interface UseVerificationTypes {
 }
 
 export interface Verification {
-  station_id: string;
-  station: string;
+  station_id?: number;
+  station?: string;
   name: string;
   mrn: string;
   fileNumber: string;
@@ -22,6 +22,7 @@ export interface Verification {
   residentialAddress: string;
   occupation: string;
   familyHouseName: string;
+  sequentialId: string;
   fhrn: string;
   nin: string;
   bvn: string;
@@ -55,6 +56,7 @@ export interface UploadedResponse {
 }
 
 export interface SignupTypes {
+  id?: string;
   name: string;
   email: string;
   userName: string;
@@ -64,56 +66,35 @@ export interface SignupTypes {
   phone: string;
   password: string;
   passwordConfirm: string;
+  sequentialId?: string;
+  createdAt?: string;
 }
 
 export interface VerificationTypes {
-  form: FormTypes;
+  form: Verification;
   photo: string | null;
 }
 
-export interface FormTypes {
-  name: string;
-  mrn: string;
-  fileNumber: string;
-  dateOfBirth: string;
-  phone: string;
-  ethnicGroup: string;
-  stateOfOrigin: string;
-  residentialAddress: string;
-  occupation: string;
-  familyHouseName: string;
-  fhrn: string;
-  nin: string;
-  bvn: string;
-  station?: string;
-}
+// export interface FormType {
+//   name: string;
+//   mrn: string;
+//   fileNumber: string;
+//   dateOfBirth: string;
+//   phone: string;
+//   ethnicGroup: string;
+//   stateOfOrigin: string;
+//   residentialAddress: string;
+//   occupation: string;
+//   familyHouseName: string;
+//   fhrn: string;
+//   nin: string;
+//   bvn: string;
+//   station?: string;
+// }
 
 export interface VerifiedMembersType {
   status: number;
   message: string;
   amount: number;
-  data: MemberType[];
-}
-
-export interface MemberType {
-  name: string;
-  mrn: string;
-  fileNumber: string;
-  dateOfBirth: string;
-  phone: string;
-  ethnicGroup: string;
-  stateOfOrigin: string;
-  residentialAddress: string;
-  occupation: string;
-  familyHouseName: string;
-  fhrn: string;
-  nin: string;
-  bvn: string;
-  photo: string;
-  createdAt: string;
-  updatedAt: string;
-  id: string;
-  sequentialId: string;
-  station_id?: number;
-  station: string;
+  data: Verification[];
 }

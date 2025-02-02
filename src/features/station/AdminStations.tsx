@@ -1,59 +1,60 @@
 import React, { useEffect, useState } from "react";
-import { useMembers } from "./useMembers";
+import { useStations } from "./useStations";
 import SpinnerMini from "../../ui/SpinnerMini";
 import Table from "../../ui/Table";
 import TableModal from "../../ui/TableModal";
-import { Verification } from "../../interfaces";
+import { SignupTypes } from "../../interfaces";
 import { BiLogOut, BiSearch } from "react-icons/bi";
-import AdminMember from "./AdminMember";
-import { useAdminLogout } from "../authenticaton/useAdminLogout";
 
-const AdminMembers: React.FC = () => {
-  const { data: members, isLoading } = useMembers();
+import { useAdminLogout } from "../authenticaton/useAdminLogout";
+import AdminStation from "./AdminStation";
+
+const AdminStations: React.FC = () => {
+  const { data: stations, isLoading } = useStations();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [membertId, setMembertId] = useState<string | null>("");
-  const [viewMember, setViewMember] = useState<Verification | null>(null);
-  const [filteredMembers, setFilteredMembers] = useState<Verification[]>([]);
+  const [stationId, setStationId] = useState<string | null>("");
+  const [viewStation, setViewStation] = useState<SignupTypes | null>(null);
+  const [filteredStations, setFilteredStations] = useState<SignupTypes[]>([]);
 
   const { logout, isPending } = useAdminLogout();
 
-  useEffect(() => {
-    if (members?.data) {
-      const term = searchTerm.toLowerCase();
-      const filtered = members.data.filter(
-        (member: Verification) =>
-          member.fileNumber.toLowerCase().includes(term) ||
-          member.name.toLowerCase().includes(term) ||
-          member.phone.toLowerCase().includes(term) ||
-          member.bvn.toLowerCase().includes(term) ||
-          member.nin.toLowerCase().includes(term)
-      );
-      setFilteredMembers(filtered);
-    }
-  }, [searchTerm, members]);
+  console.log(viewStation);
 
   useEffect(() => {
-    if (membertId) {
-      const currentMember = filteredMembers.find(
-        (member) => member.id === membertId
+    if (stations) {
+      const term = searchTerm.toLowerCase();
+      const filtered = stations.filter(
+        (station: SignupTypes) =>
+          station.fileNumber?.includes(term) ||
+          station.name?.toLowerCase().includes(term) ||
+          station.phone?.includes(term)
       );
-      setViewMember(currentMember || null);
+      setFilteredStations(filtered);
     }
-  }, [membertId, filteredMembers]);
+  }, [searchTerm, stations]);
+
+  useEffect(() => {
+    if (stationId) {
+      const currentStation = filteredStations.find(
+        (station) => station.id === stationId
+      );
+      setViewStation(currentStation || null);
+    }
+  }, [stationId, filteredStations]);
 
   // Assign sequential IDs
-  const membersWithIds = filteredMembers.map((member, index) => ({
-    ...member,
+  const stationsWithIds = filteredStations.map((station, index) => ({
+    ...station,
     sequentialId: index + 1,
   }));
 
   const handleViewClick = (id: string) => {
-    setMembertId(id);
+    setStationId(id);
   };
 
   const handleCloseModal = () => {
-    setMembertId(null);
+    setStationId(null);
   };
 
   const handleLogout = async () => {
@@ -118,23 +119,23 @@ const AdminMembers: React.FC = () => {
             </Table.Header>
             <div className="h-[500px] overflow-y-scroll">
               <Table.Body
-                data={membersWithIds}
-                render={(member: Verification) => (
-                  <Table.Row key={member.id}>
+                data={stationsWithIds}
+                render={(station: SignupTypes) => (
+                  <Table.Row key={station.id}>
                     {/* Sequential ID */}
                     <div className="border-r text-white text-xs md:text-base font-bold px-2 py-1">
-                      {member.sequentialId}
+                      {station.sequentialId}
                     </div>
 
                     <div className=" text-xs md:text-base border-r text-white px-2 py-1 ">
-                      {member.name}
+                      {station.name}
                     </div>
 
                     <div className=" text-[8px] flex justify-center px-2 py-1">
                       <button
                         className=" text-white bg-blue-500 border border-white hover:bg-blue-600 px-1 rounded-md"
                         type="button"
-                        onClick={() => handleViewClick(member.id)}
+                        onClick={() => handleViewClick(station.id!)}
                       >
                         View
                       </button>
@@ -147,10 +148,10 @@ const AdminMembers: React.FC = () => {
         </div>
       </div>
 
-      {membertId && (
+      {stationId && (
         <TableModal onClose={handleCloseModal}>
-          <div className=" min-h-[630px] mt-2 overflow-y-scroll px-2 ">
-            <AdminMember member={viewMember} setMembertId={setMembertId} />
+          <div className="mt-2 overflow-y-scroll">
+            <AdminStation station={viewStation} setStationId={setStationId} />
           </div>
         </TableModal>
       )}
@@ -158,4 +159,4 @@ const AdminMembers: React.FC = () => {
   );
 };
 
-export default AdminMembers;
+export default AdminStations;

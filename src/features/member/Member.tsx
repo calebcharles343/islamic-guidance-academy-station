@@ -1,6 +1,6 @@
 import React from "react";
 import { MemberType } from "../../interfaces";
-import { useStation } from "../authenticaton/useStation";
+import { useStation } from "../station/useStation";
 
 interface memberProps {
   member: MemberType;

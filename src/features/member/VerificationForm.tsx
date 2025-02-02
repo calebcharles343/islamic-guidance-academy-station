@@ -1,17 +1,19 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import SpinnerMini from "../../ui/SpinnerMini";
-import { FormTypes } from "../../interfaces";
+
 import { useVerification } from "./useVerifacation";
 import toast from "react-hot-toast/headless";
-import { useLogout } from "./useLogout";
+
 import { BiLogOut } from "react-icons/bi";
+import { Verification } from "../../interfaces";
+import { useLogout } from "../authenticaton/useLogout";
 
 const VerificationForm: React.FC = () => {
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState<string | null>(null);
 
-  const [formData, setFormData] = useState<FormTypes>({
+  const [formData, setFormData] = useState<Partial<Verification>>({
     name: "",
     mrn: "",
     fileNumber: "",

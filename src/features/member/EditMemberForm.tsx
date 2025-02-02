@@ -1,14 +1,14 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import SpinnerMini from "../../ui/SpinnerMini";
-import { FormTypes, MemberType } from "../../interfaces";
+import { Verification } from "../../interfaces";
 import toast from "react-hot-toast/headless";
 import { useUpdateMember } from "./useUpdateMember";
 // import { useLogout } from "./useLogout";
 // import { BiLogOut } from "react-icons/bi";
 
 interface EditVerificationFormProps {
-  member: MemberType;
+  member: Verification;
   setIsEdit: (value: boolean) => void;
 }
 
@@ -19,7 +19,7 @@ const EditMemberForm: React.FC<EditVerificationFormProps> = ({
   const [fileInputState, setFileInputState] = useState("");
   const [previewSource, setPreviewSource] = useState<string | null>(null);
 
-  const [formData, setFormData] = useState<FormTypes>({
+  const [formData, setFormData] = useState<Partial<Verification>>({
     name: member.name,
     mrn: member.mrn,
     fileNumber: member.fileNumber,

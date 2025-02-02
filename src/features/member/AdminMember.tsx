@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { MemberType } from "../../interfaces";
-import { useStation } from "../authenticaton/useStation";
+import { Verification } from "../../interfaces";
+import { useStation } from "../station/useStation";
 import TableModal from "../../ui/TableModal";
 import EditMemberForm from "./EditMemberForm";
 import Swal from "sweetalert2";
@@ -8,7 +8,7 @@ import { useDeleteMember } from "./useDeleteMember";
 import { dateformat } from "../../utils/dateFormat";
 
 interface AdminMemberProps {
-  member: MemberType | null;
+  member: Verification | null;
   setMembertId: Dispatch<SetStateAction<string | null>>;
 }
 

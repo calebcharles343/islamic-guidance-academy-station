@@ -12,12 +12,15 @@ import SignupForm from "./features/authenticaton/SignupForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import AuthGuard from "./features/authenticaton/AuthGuard";
-import VerificationForm from "./features/authenticaton/VerificationForm";
+
 import MembersTable from "./pages/MembersTable";
 import Admin from "./pages/Admin";
 import AdminLoginForm from "./features/authenticaton/AdminLoginForm";
 import AdminAuthGuard from "./features/authenticaton/AdminAuthGuard";
 import AdminHome from "./pages/AdminHome";
+import VerificationForm from "./features/member/VerificationForm";
+import AdminStation from "./features/station/AdminStation";
+import AdminStations from "./features/station/AdminStations";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -59,6 +62,14 @@ const router = createBrowserRouter([
     element: (
       <AdminAuthGuard>
         <AdminHome />
+      </AdminAuthGuard>
+    ),
+  },
+  {
+    path: "secret-001/admin-stations",
+    element: (
+      <AdminAuthGuard>
+        <AdminStations />
       </AdminAuthGuard>
     ),
   },

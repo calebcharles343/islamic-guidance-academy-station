@@ -76,6 +76,61 @@ export const getStation = async function (id: string) {
   }
 };
 
+export const getStations = async function () {
+  try {
+    const response = await axios.get(`${apiURL}/stations`);
+
+    console.log(response);
+
+    return response.data.data;
+  } catch (err) {
+    // ErrorHandler(err);
+    if (axios.isAxiosError(err)) {
+      return err.response?.data;
+    } else {
+      // Handle other errors
+      console.log(err);
+    }
+  }
+};
+
+export const deleteStation = async function (id: string) {
+  try {
+    const response = await axios.delete(`${apiURL}/stations/${id}`);
+
+    console.log(response);
+
+    return response.data.data;
+  } catch (err) {
+    // ErrorHandler(err);
+    if (axios.isAxiosError(err)) {
+      return err.response?.data;
+    } else {
+      // Handle other errors
+      console.log(err);
+    }
+  }
+};
+export const updateStation = async function (id: string, data: SignupTypes) {
+  try {
+    const response = await axios.patch<SignupTypes>(
+      `${apiURL}/stations/update/${id}`,
+      data
+    );
+    console.log(response.data);
+
+    return response.data;
+  } catch (err) {
+    // ErrorHandler(err);
+    if (axios.isAxiosError(err)) {
+      return err.response?.data;
+    } else {
+      // Handle other errors
+      console.log(err);
+    }
+  }
+};
+
 // export const updateUser = async function (
 //   UserId: number | undefined,
 //   data: UpdateUserType
