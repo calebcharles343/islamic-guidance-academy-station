@@ -22,7 +22,7 @@ export default function AdminRoute() {
           </NavLink>
 
           <NavLink
-            to="//secret-001/admin-members"
+            to="/secret-001/admin-members"
             className="hover:bg-slate-800 border px-4 py-2"
           >
             <span className="">Admin Members</span>

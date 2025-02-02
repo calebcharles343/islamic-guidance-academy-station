@@ -149,7 +149,7 @@ const AdminMembers: React.FC = () => {
 
       {membertId && (
         <TableModal onClose={handleCloseModal}>
-          <div className="min-h-[630px] mt-2 overflow-y-scroll px-2 ">
+          <div className=" min-h-[630px] mt-2 overflow-y-scroll px-2 ">
             <AdminMember member={viewMember} setMembertId={setMembertId} />
           </div>
         </TableModal>

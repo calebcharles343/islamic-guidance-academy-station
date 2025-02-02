@@ -52,7 +52,7 @@ const AdminMember: React.FC<AdminMemberProps> = ({ member, setMembertId }) => {
     <>
       {!isEdit && (
         <div
-          className="w-full  bg-white shadow-lg rounded-lg overflow-hidden pb-4"
+          className="w-full md:w-[500px]  bg-white shadow-lg rounded-lg overflow-hidden pb-4"
           style={{ fontFamily: "Roboto", letterSpacing: "0.6px" }}
         >
           <img
