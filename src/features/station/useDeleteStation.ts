@@ -10,7 +10,6 @@ interface ErrorResponse {
 interface FetchError extends AxiosError {
   response?: AxiosResponse<ErrorResponse>;
 }
-
 export function useDeleteStation() {
   const queryClient = useQueryClient();
 
@@ -25,16 +24,14 @@ export function useDeleteStation() {
     },
     onSuccess: () => {
       toast.success("Station deleted");
-
-      queryClient.invalidateQueries([`stations`] as any);
+      queryClient.invalidateQueries(["stations"] as any);
     },
     onError: (error) => {
-      toast.error("Error deleting station");
-
       const errorMessage =
-        error.response?.data.message ||
+        error.response?.data?.message ||
         "An error occurred while deleting the station.";
-      console.error("Delete student Error:", errorMessage);
+      toast.error(errorMessage);
+      console.error("Delete Station Error:", errorMessage);
     },
   });
 

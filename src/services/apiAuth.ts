@@ -14,7 +14,7 @@ export const login = async function (email: string, password: string) {
         password,
       }
     );
-    console.log(response.data);
+    // console.log(response, "❌❌❌");
 
     return response.data;
   } catch (err) {
@@ -96,11 +96,29 @@ export const getStations = async function () {
 
 export const deleteStation = async function (id: string) {
   try {
-    const response = await axios.delete(`${apiURL}/stations/${id}`);
-
-    console.log(response);
-
+    const response = await axios.delete(`${apiURL}/stations/delete/${id}`);
     return response.data.data;
+  } catch (err) {
+    if (axios.isAxiosError(err) && err.response) {
+      throw new Error(err.response.data.message || "Failed to delete station");
+    } else {
+      throw new Error("Network error. Server may be down.");
+    }
+  }
+};
+
+export const updateStation = async function (
+  id: string,
+  data: Partial<SignupTypes>
+) {
+  try {
+    const response = await axios.patch<SignupTypes>(
+      `${apiURL}/stations/update/${id}`,
+      data
+    );
+    console.log(response.data);
+
+    return response.data;
   } catch (err) {
     // ErrorHandler(err);
     if (axios.isAxiosError(err)) {
@@ -111,10 +129,14 @@ export const deleteStation = async function (id: string) {
     }
   }
 };
-export const updateStation = async function (id: string, data: SignupTypes) {
+
+export const updateStationPassword = async function (
+  id: string,
+  data: Partial<SignupTypes>
+) {
   try {
     const response = await axios.patch<SignupTypes>(
-      `${apiURL}/stations/update/${id}`,
+      `${apiURL}/stations/updateStationPassword/${id}`,
       data
     );
     console.log(response.data);

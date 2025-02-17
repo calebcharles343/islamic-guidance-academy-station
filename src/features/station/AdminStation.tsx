@@ -27,7 +27,7 @@ const AdminStation: React.FC<AdminStationProps> = ({
 
   const { deleteStation } = useDeleteStation();
 
-  const handleDeletestation = (e: React.MouseEvent) => {
+  const handleDeleteStation = (e: React.MouseEvent) => {
     e.stopPropagation();
 
     Swal.fire({
@@ -40,7 +40,11 @@ const AdminStation: React.FC<AdminStationProps> = ({
       customClass: { popup: "custom-style" },
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteStation(station?.id!);
+        deleteStation(station?.id!, {
+          onError: (error) => {
+            Swal.fire("Error!", error.message, "error");
+          },
+        });
         setIsEdit(false);
         if (setStationId) {
           setStationId(null);
@@ -113,7 +117,7 @@ const AdminStation: React.FC<AdminStationProps> = ({
             </button>{" "}
             <button
               className="w-24 text-red-500 border border-red-500 p-1 rounded-md"
-              onClick={handleDeletestation}
+              onClick={handleDeleteStation}
             >
               Delete
             </button>
