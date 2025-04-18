@@ -53,8 +53,6 @@ const AdminStation: React.FC<AdminStationProps> = ({
     });
   };
 
-  console.log(station);
-
   // }
   return (
     // <div></div>

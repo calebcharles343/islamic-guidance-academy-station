@@ -15,7 +15,7 @@ export default function Route() {
       <div className="flex flex-col items-center gap-2">
         <div className="flex flex-col items-center gap-4">
           <NavLink
-            to="/members-table"
+            to="/members"
             className="hover:bg-slate-800 border px-4 py-2"
           >
             <span className="">Verified Members</span>
