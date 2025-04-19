@@ -55,12 +55,13 @@ export interface UploadedResponse {
   api_key: string;
 }
 
-export interface SignupTypes {
+export interface StationTypes {
   id?: string;
   name: string;
   email: string;
   userName: string;
   station: string;
+  department: string;
   drn: string;
   fileNumber: string;
   phone: string;

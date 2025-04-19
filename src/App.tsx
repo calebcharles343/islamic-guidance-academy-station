@@ -8,7 +8,6 @@ import PageNotFound from "./pages/PageNotFound";
 import Home from "./pages/Home";
 import AppLayout from "./ui/AppLayout";
 import LoginForm from "./features/authenticaton/LoginForm";
-import SignupForm from "./features/authenticaton/SignupForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
 import AuthGuard from "./features/authenticaton/AuthGuard";
@@ -20,6 +19,7 @@ import AdminAuthGuard from "./features/authenticaton/AdminAuthGuard";
 import AdminHome from "./pages/AdminHome";
 import VerificationForm from "./features/member/VerificationForm";
 import AdminStations from "./features/station/AdminStations";
+import FormAddStation from "./features/authenticaton/FormAddStation";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -76,7 +76,7 @@ const router = createBrowserRouter([
     path: "secret-001/signup",
     element: (
       <AdminAuthGuard>
-        <SignupForm />
+        <FormAddStation />
       </AdminAuthGuard>
     ),
   },

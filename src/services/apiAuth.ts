@@ -1,13 +1,13 @@
 import axios from "axios";
 
-import { SignupTypes } from "../interfaces.ts";
+import { StationTypes } from "../interfaces.ts";
 import { baseUrl } from "./baseUrl.ts";
 
 const apiURL = baseUrl();
 
 export const login = async function (email: string, password: string) {
   try {
-    const response = await axios.post<Partial<SignupTypes>>(
+    const response = await axios.post<Partial<StationTypes>>(
       `${apiURL}/stations/login`,
       {
         email,
@@ -26,9 +26,9 @@ export const login = async function (email: string, password: string) {
   }
 };
 
-export const signup = async function (data: SignupTypes) {
+export const signup = async function (data: StationTypes) {
   try {
-    const response = await axios.post<SignupTypes>(
+    const response = await axios.post<StationTypes>(
       `${apiURL}/stations/signup`,
       data
     );
@@ -109,10 +109,10 @@ export const deleteStation = async function (id: string) {
 
 export const updateStation = async function (
   id: string,
-  data: Partial<SignupTypes>
+  data: Partial<StationTypes>
 ) {
   try {
-    const response = await axios.patch<SignupTypes>(
+    const response = await axios.patch<StationTypes>(
       `${apiURL}/stations/update/${id}`,
       data
     );
@@ -132,10 +132,10 @@ export const updateStation = async function (
 
 export const updateStationPassword = async function (
   id: string,
-  data: Partial<SignupTypes>
+  data: Partial<StationTypes>
 ) {
   try {
-    const response = await axios.patch<SignupTypes>(
+    const response = await axios.patch<StationTypes>(
       `${apiURL}/stations/updateStationPassword/${id}`,
       data
     );

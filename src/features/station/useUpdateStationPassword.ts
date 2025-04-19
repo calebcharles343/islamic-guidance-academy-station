@@ -6,7 +6,7 @@ import { useState } from "react";
 import { updateStationPassword as updateStationPasswordApi } from "../../services/apiAuth";
 
 import toast from "react-hot-toast";
-import { SignupTypes } from "../../interfaces";
+import { StationTypes } from "../../interfaces";
 
 interface ErrorResponse {
   message: string;
@@ -25,7 +25,7 @@ export function useUpdateStationPassword(id: string) {
     isPending,
     isError,
   } = useMutation({
-    mutationFn: (data: Partial<SignupTypes>) =>
+    mutationFn: (data: Partial<StationTypes>) =>
       updateStationPasswordApi(id, data),
 
     onSuccess: (data) => {

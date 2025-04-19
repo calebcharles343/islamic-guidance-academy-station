@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { SignupTypes } from "../../interfaces";
+import { StationTypes } from "../../interfaces";
 import TableModal from "../../ui/TableModal";
 // import EditstationForm from "./EditstationForm";
 import Swal from "sweetalert2";
@@ -9,7 +9,7 @@ import { useDeleteStation } from "./useDeleteStation";
 import EditStationForm from "./EditStationForm";
 
 interface AdminStationProps {
-  station: SignupTypes | null;
+  station: StationTypes | null;
   setStationId: Dispatch<SetStateAction<string | null>>;
 }
 

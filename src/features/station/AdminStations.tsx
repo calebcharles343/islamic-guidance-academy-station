@@ -3,7 +3,7 @@ import { useStations } from "./useStations";
 import SpinnerMini from "../../ui/SpinnerMini";
 import Table from "../../ui/Table";
 import TableModal from "../../ui/TableModal";
-import { SignupTypes } from "../../interfaces";
+import { StationTypes } from "../../interfaces";
 import { BiLogOut, BiSearch } from "react-icons/bi";
 
 import { useAdminLogout } from "../authenticaton/useAdminLogout";
@@ -14,8 +14,8 @@ const AdminStations: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [stationId, setStationId] = useState<string | null>("");
-  const [viewStation, setViewStation] = useState<SignupTypes | null>(null);
-  const [filteredStations, setFilteredStations] = useState<SignupTypes[]>([]);
+  const [viewStation, setViewStation] = useState<StationTypes | null>(null);
+  const [filteredStations, setFilteredStations] = useState<StationTypes[]>([]);
 
   const { logout, isPending } = useAdminLogout();
 
@@ -25,7 +25,7 @@ const AdminStations: React.FC = () => {
     if (stations) {
       const term = searchTerm.toLowerCase();
       const filtered = stations.filter(
-        (station: SignupTypes) =>
+        (station: StationTypes) =>
           station.name?.toLowerCase().includes(term) ||
           station.email?.toLowerCase().includes(term) ||
           station.fileNumber?.includes(term) ||
@@ -130,7 +130,7 @@ const AdminStations: React.FC = () => {
             <div className="max-h-[500px] overflow-y-scroll">
               <Table.Body
                 data={stationsWithIds}
-                render={(station: SignupTypes) => (
+                render={(station: StationTypes) => (
                   <Table.Row key={station.id}>
                     {/* Sequential ID */}
                     <div className="border-r text-white text-xs md:text-base font-bold px-2 py-1">

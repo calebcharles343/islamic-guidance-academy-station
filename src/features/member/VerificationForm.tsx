@@ -146,12 +146,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Name
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="name"
                     type="text"
                     placeholder="Enter your name"
@@ -164,12 +164,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="mrn"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     MRN
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="mrn"
                     type="text"
                     placeholder="Enter your MRN"
@@ -182,12 +182,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="fileNumber"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     File Number
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="fileNumber"
                     type="text"
                     placeholder="Enter your file number"
@@ -200,12 +200,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="dateOfBirth"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Date Of Birth
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="dateOfBirth"
                     type="text"
                     placeholder="Enter your date of birth"
@@ -218,12 +218,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Phone
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="phone"
                     type="tel"
                     placeholder="Enter your phone number"
@@ -237,12 +237,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="ethnicGroup"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Ethnic Group
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="ethnicGroup"
                     type="text"
                     placeholder="Enter ethnic group"
@@ -255,12 +255,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="stateOfOrigin"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     State Of Origin
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="stateOfOrigin"
                     type="text"
                     placeholder="Enter your state of origin"
@@ -272,12 +272,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="residentialAddress"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Residential Address
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="residentialAddress"
                     type="text"
                     placeholder="Enter your residential address"
@@ -289,12 +289,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="occupation"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Occupation
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="occupation"
                     type="text"
                     placeholder="Enter your occupation"
@@ -306,12 +306,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="familyHouseName"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Family House Name
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="familyHouseName"
                     type="text"
                     placeholder="Enter your family house name"
@@ -324,12 +324,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="fhrn"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     FHRN
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="fhrn"
                     type="text"
                     placeholder="Enter your FHRN"
@@ -342,12 +342,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="nin"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     National Identification Number
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="nin"
                     type="text" // Use "text" instead of "number"
                     placeholder="National identification number"
@@ -360,12 +360,12 @@ const VerificationForm: React.FC = () => {
                 <div>
                   <label
                     htmlFor="bvn"
-                    className="block mb-1 font-bold text-gray-700"
+                    className="block mb-1 text-sm font-bold text-gray-700"
                   >
                     Bank Verification Number
                   </label>
                   <input
-                    className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="bvn"
                     type="text" // Use "text" instead of "number"
                     placeholder="Bank verification number"

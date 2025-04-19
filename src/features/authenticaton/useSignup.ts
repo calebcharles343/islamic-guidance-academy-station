@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { signup as signupApi } from "../../services/apiAuth.ts";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-hot-toast";
-import { SignupTypes } from "../../interfaces.ts";
+import { StationTypes } from "../../interfaces.ts";
 
 // interface Sig {
 //   name: string;
@@ -18,7 +18,7 @@ interface ErrorResponse {
 }
 
 interface UseSignupType {
-  data: SignupTypes;
+  data: StationTypes;
 }
 
 interface LoginError extends AxiosError {
