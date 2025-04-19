@@ -96,7 +96,8 @@ const AdminStation: React.FC<AdminStationProps> = ({
                 <strong>File Number:</strong> {station?.fileNumber}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
-                <strong>Department:</strong> {station?.department}
+                <strong>Department:</strong>{" "}
+                {station?.department ? station?.department : "N/A"}
               </p>
               <p className="text-xs md:text-sm text-gray-600">
                 <strong>Phone:</strong> {station?.phone}
