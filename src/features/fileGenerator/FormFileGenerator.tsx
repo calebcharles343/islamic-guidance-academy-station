@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import Input from "../../ui/Input";
 import Label from "../../ui/Label";
-import { FileGenerator, Verification } from "../../interfaces";
+import { FileGenerator } from "../../interfaces";
 import { useLogout } from "../authenticaton/useLogout";
 import { BiLogOut } from "react-icons/bi";
 import SpinnerMini from "../../ui/SpinnerMini";
@@ -35,9 +35,9 @@ const FormFileGenerator = () => {
     //   return;
     // }
 
-    const data = {
-      form: formData,
-    };
+    // const data = {
+    //   form: formData,
+    // };
 
     // verify(data as any);
   };

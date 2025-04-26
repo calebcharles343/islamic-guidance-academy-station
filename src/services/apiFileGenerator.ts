@@ -1,7 +1,7 @@
 import axios from "axios";
 import { localStorageUser } from "../utils/localStorageUser";
 
-import { FileGenerator, VerifiedMembersType } from "../interfaces";
+import { FileGenerator } from "../interfaces";
 import { baseUrl } from "./baseUrl";
 
 const url = baseUrl();
