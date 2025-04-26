@@ -49,7 +49,7 @@ const FileInput: React.FC<FileInputProps> = ({
         className="flex items-center justify-center text-[10px] border border-solid border-white bg-slate-800 rounded-sm cursor-pointer w-24 sm:w-24 p-2"
       >
         Upload Photo
-      </label>
+      </Label>
       {fileName && <p className="text-xs text-gray-500 mt-1">{fileName}</p>}
     </div>
   );

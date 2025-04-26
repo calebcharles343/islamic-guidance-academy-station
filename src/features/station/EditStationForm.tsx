@@ -5,6 +5,8 @@ import { useUpdateStation } from "./useUpdateStation";
 import { StationTypes } from "../../interfaces";
 import { useUpdateStationPassword } from "./useUpdateStationPassword";
 import { departments, stations } from "./data/stationData";
+import Input from "../../ui/Input";
+import Label from "../../ui/Label";
 
 interface EditStationFormProps {
   station: StationTypes;
@@ -110,14 +112,8 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
             >
               <div className="flex flex-col w-full gap-4">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Name
-                  </label>
-                  <input
-                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  <Label htmlFor="name">Name</Label>
+                  <Input
                     id="name"
                     type="text"
                     placeholder="Enter your name"
@@ -128,14 +124,8 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Email
-                  </label>
-                  <input
-                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  <Label htmlFor="email">Email</Label>
+                  <Input
                     id="email"
                     type="email"
                     placeholder="Enter your email"
@@ -146,14 +136,8 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="userName"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Username
-                  </label>
-                  <input
-                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  <Label htmlFor="userName">Username</Label>
+                  <Input
                     id="userName"
                     type="text"
                     placeholder="Enter your username"
@@ -164,12 +148,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="station"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Station
-                  </label>
+                  <Label htmlFor="station">Station</Label>
                   <select
                     className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="station"
@@ -189,12 +168,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="department"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Department
-                  </label>
+                  <Label htmlFor="department">Department</Label>
                   <select
                     className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                     id="department"
@@ -212,14 +186,8 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="drn"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    DRN
-                  </label>
-                  <input
-                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  <Label htmlFor="drn">DRN</Label>
+                  <Input
                     id="drn"
                     type="text"
                     placeholder="Enter your DRN"
@@ -229,14 +197,8 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="fileNumber"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    File Number
-                  </label>
-                  <input
-                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  <Label htmlFor="fileNumber">File Number</Label>
+                  <Input
                     id="fileNumber"
                     type="text"
                     placeholder="Enter your file number"
@@ -245,14 +207,8 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="phone"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Phone
-                  </label>
-                  <input
-                    className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
                     id="phone"
                     type="tel"
                     placeholder="Enter your phone number"
@@ -281,12 +237,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
             >
               <div className="flex flex-col w-full gap-4">
                 <div>
-                  <label
-                    htmlFor="password"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Password
-                  </label>
+                  <Label htmlFor="password">Password</Label>
                   <div className="relative w-full">
                     <input
                       className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
@@ -306,12 +257,7 @@ const EditStationForm: React.FC<EditStationFormProps> = ({
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="passwordConfirm"
-                    className="block mb-1 text-sm font-bold text-gray-700"
-                  >
-                    Confirm Password
-                  </label>
+                  <Label htmlFor="passwordConfirm">Confirm Password</Label>
                   <div className="relative w-full">
                     <input
                       className="w-full h-6 md:h-8 px-3 rounded-md border placeholder:text-sm focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"

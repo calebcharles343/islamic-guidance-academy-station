@@ -23,9 +23,9 @@ const TextInput: React.FC<TextInputProps> = ({
   pattern,
 }) => (
   <div>
-    <label htmlFor={id} className="block mb-1 font-bold text-gray-700">
+    <Label htmlFor={id} className="block mb-1 font-bold text-gray-700">
       {label}
-    </label>
+    </Label>
     <input
       id={id}
       type={type}

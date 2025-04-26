@@ -20,6 +20,7 @@ import AdminHome from "./pages/AdminHome";
 import VerificationForm from "./features/member/VerificationForm";
 import AdminStations from "./features/station/AdminStations";
 import FormAddStation from "./features/authenticaton/FormAddStation";
+import FormFileGenerator from "./features/fileGenerator/FormFileGenerator";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
     element: (
       <AdminAuthGuard>
         <AdminStations />
+      </AdminAuthGuard>
+    ),
+  },
+  {
+    path: "secret-001/file-generator",
+    element: (
+      <AdminAuthGuard>
+        <FormFileGenerator />
       </AdminAuthGuard>
     ),
   },

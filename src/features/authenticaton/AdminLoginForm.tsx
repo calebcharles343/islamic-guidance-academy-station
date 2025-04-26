@@ -68,7 +68,7 @@ const AdminLoginForm: React.FC = () => {
                 className="block mb-1 font-bold text-gray-700"
               >
                 Email
-              </label>
+              </Label>
               <input
                 className="w-full h-8 md:h-10 px-4 rounded-md border focus:border-[#B97743] focus:outline-none shadow-sm text-gray-700"
                 id="email"

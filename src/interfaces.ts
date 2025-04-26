@@ -32,6 +32,23 @@ export interface Verification {
   id: string;
 }
 
+export interface FileGenerator {
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+  stateOfOrigin: string;
+  community: string;
+  mrn: string;
+  fileNumber: string;
+  nationality: string;
+  ethnicGroup: string;
+  phone: string;
+  sequentialId?: string;
+  createdAt: string;
+  updatedAt: string;
+  id?: string;
+}
+
 export interface UploadedResponse {
   asset_id: string;
   public_id: string;
