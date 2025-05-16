@@ -5,16 +5,8 @@ import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-hot-toast";
 import { StationTypes } from "../../interfaces.ts";
 
-// interface Sig {
-//   name: string;
-//   email: string;
-//   password: string;
-//   confirmPassword: string;
-// }
-
 interface ErrorResponse {
-  message: string; // Assuming the error response has a 'message' field
-  // Add any other properties that might be in the error response
+  message: string;
 }
 
 interface UseSignupType {

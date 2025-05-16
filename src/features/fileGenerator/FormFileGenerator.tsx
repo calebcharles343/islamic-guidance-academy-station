@@ -1,10 +1,14 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Input from "../../ui/Input";
 import Label from "../../ui/Label";
 import { FileGenerator } from "../../interfaces";
 import { useLogout } from "../authenticaton/useLogout";
 import { BiLogOut } from "react-icons/bi";
 import SpinnerMini from "../../ui/SpinnerMini";
+import { religions, states } from "../station/data/stationData";
+import { useCreateFile } from "./useCreateFile";
+import Select from "../../ui/Select";
+import { FileUpload } from "../../ui/FileUpload";
 
 const FormFileGenerator = () => {
   const [formData, setFormData] = useState<Partial<FileGenerator>>({
@@ -12,34 +16,66 @@ const FormFileGenerator = () => {
     middleName: "",
     lastName: "",
     stateOfOrigin: "",
-    community: "",
-    mrn: "",
-    fileNumber: "",
+    religion: "",
+    // mrn: "",
+    // fileNumber: "",
     nationality: "",
     ethnicGroup: "",
     phone: "",
   });
 
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+
+  const { create, isPending } = useCreateFile(); // Hook for creating file
+
+  // Generate file number when state of origin changes
+  useEffect(() => {
+    if (formData.stateOfOrigin && formData.stateOfOrigin.length >= 3) {
+      const statePrefix = formData.stateOfOrigin.substring(0, 3).toUpperCase();
+      // In a real app, you would fetch existing files to determine the next number
+      // For now, we'll assume it's the first file (01)
+      setFormData((prev) => ({ ...prev, fileNumber: `${statePrefix}01` }));
+    }
+  }, [formData.stateOfOrigin]);
+
+  // Generate MRN when religion changes
+  useEffect(() => {
+    if (formData.religion) {
+      const currentYear = new Date().getFullYear();
+      const yearPart = (currentYear - 578).toString(); // 2023 - 578 = 1445 (Islamic calendar)
+
+      // Get religion code (assuming religions have M0, M1, M2 in their ids)
+      const religionObj = religions.find((r) => r.id === formData.religion);
+      const religionCode = religionObj?.id || "M0";
+
+      // In a real app, you would fetch existing MRNs to determine the next number
+      // For now, we'll assume it's the first in sequence (2501)
+      setFormData((prev) => ({
+        ...prev,
+        mrn: `m263-${yearPart}-2501${religionCode}`,
+      }));
+    }
+  }, [formData.religion]);
+
+  // const handleInputChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  // ) => {
+  //   const { id, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [id]: value }));
+  // };
+
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    field: keyof FileGenerator,
+    value: string | string[] | number
   ) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    setFormData({ ...formData, [field]: value });
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    console.log(formData);
 
-    // if (previewSource === null) {
-    //   toast.error("Please provide your photo");
-    //   return;
-    // }
-
-    // const data = {
-    //   form: formData,
-    // };
-
-    // verify(data as any);
+    create({ data: formData, files: selectedFiles });
   };
 
   const { logout, isPending: isLoggingOut } = useLogout();
@@ -47,8 +83,6 @@ const FormFileGenerator = () => {
   const handleLogout = async () => {
     logout();
   };
-
-  const isPending = false;
 
   return (
     <div
@@ -88,7 +122,9 @@ const FormFileGenerator = () => {
                     type="text"
                     placeholder="Enter your first name"
                     value={formData.firstName}
-                    onChange={handleInputChange}
+                    onChange={(e) =>
+                      handleInputChange("firstName", e.target.value)
+                    }
                     required
                   />
                 </div>
@@ -99,7 +135,9 @@ const FormFileGenerator = () => {
                     type="text"
                     placeholder="Enter your middle name"
                     value={formData.middleName}
-                    onChange={handleInputChange}
+                    onChange={(e) =>
+                      handleInputChange("middleName", e.target.value)
+                    }
                     required
                   />
                 </div>
@@ -108,53 +146,35 @@ const FormFileGenerator = () => {
                   <Input
                     id="lastName"
                     type="text"
-                    placeholder="Enter your middle name"
+                    placeholder="Enter your last name"
                     value={formData.lastName}
-                    onChange={handleInputChange}
+                    onChange={(e) =>
+                      handleInputChange("lastName", e.target.value)
+                    }
                     required
                   />
                 </div>
                 <div>
                   <Label htmlFor="stateOfOrigin">State Of Origin</Label>
-                  <Input
+                  <Select
+                    clearable={true}
+                    filterable={true}
                     id="stateOfOrigin"
-                    type="text"
-                    placeholder="Enter your state of origin"
-                    value={formData.stateOfOrigin}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="community">Community</Label>
-                  <Input
-                    id="community"
-                    type="text"
-                    placeholder="Enter your community"
-                    value={formData.community}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="mrn">MRN</Label>
-                  <Input
-                    id="mrn"
-                    type="text"
-                    placeholder="Enter your MRN"
-                    value={formData.mrn}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="fileNumber">File Number</Label>
-                  <Input
-                    id="fileNumber"
-                    type="text"
-                    placeholder="Enter your file number"
-                    value={formData.fileNumber}
-                    onChange={handleInputChange}
+                    customLabel="Select A State"
+                    value={formData.stateOfOrigin || ""}
+                    onChange={(value) =>
+                      handleInputChange("stateOfOrigin", value)
+                    }
+                    options={
+                      states
+                        ? states
+                            .filter((state) => state.id)
+                            .map((state) => ({
+                              id: state.id,
+                              name: state.name,
+                            }))
+                        : []
+                    }
                     required
                   />
                 </div>
@@ -165,18 +185,30 @@ const FormFileGenerator = () => {
                     type="text"
                     placeholder="Enter your nationality"
                     value={formData.nationality}
-                    onChange={handleInputChange}
+                    onChange={(e) =>
+                      handleInputChange("nationality", e.target.value)
+                    }
                     required
                   />
                 </div>
                 <div>
-                  <Label htmlFor="community">Community</Label>
-                  <Input
-                    id="community"
-                    type="text"
-                    placeholder="Enter your community"
-                    value={formData.community}
-                    onChange={handleInputChange}
+                  <Label htmlFor="religion">Religion</Label>
+                  <Select
+                    clearable={true}
+                    id="religion"
+                    customLabel="Select Religion"
+                    value={formData.religion || ""}
+                    onChange={(value) => handleInputChange("religion", value)}
+                    options={
+                      religions
+                        ? religions
+                            .filter((religion) => religion.id)
+                            .map((religion) => ({
+                              id: religion.id,
+                              name: religion.name,
+                            }))
+                        : []
+                    }
                     required
                   />
                 </div>
@@ -187,7 +219,9 @@ const FormFileGenerator = () => {
                     type="text"
                     placeholder="Enter your Ethnic Group"
                     value={formData.ethnicGroup}
-                    onChange={handleInputChange}
+                    onChange={(e) =>
+                      handleInputChange("ethnicGroup", e.target.value)
+                    }
                     required
                   />
                 </div>
@@ -198,12 +232,19 @@ const FormFileGenerator = () => {
                     type="tel"
                     placeholder="Enter your phone number"
                     value={formData.phone}
-                    pattern="\d{11}" // Enforces exactly 11 digits
-                    onChange={handleInputChange}
+                    pattern="\d{11}"
+                    onChange={(e) => handleInputChange("phone", e.target.value)}
                     required
                   />
                 </div>
               </div>
+
+              <FileUpload
+                selectedFiles={selectedFiles}
+                setSelectedFiles={setSelectedFiles}
+                accept=".jpg,.png,.pdf,.xlsx,.docx"
+                multiple={true}
+              />
 
               <button
                 type="submit"

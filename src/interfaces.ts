@@ -1,3 +1,15 @@
+export interface FileType {
+  name: string;
+  url: string;
+  cloudinaryId: string;
+  mimeType: string;
+  size: number;
+  fileType: string;
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+}
+
 export interface UseVerification {
   status?: number;
   data: UseVerificationTypes;
@@ -32,12 +44,18 @@ export interface Verification {
   id: string;
 }
 
+export interface FilesQuery {
+  status: number;
+  message: string;
+  data: { files: FileGenerator[] };
+}
+
 export interface FileGenerator {
   firstName: string;
   middleName?: string;
   lastName: string;
   stateOfOrigin: string;
-  community: string;
+  religion: string;
   mrn: string;
   fileNumber: string;
   nationality: string;
@@ -47,6 +65,7 @@ export interface FileGenerator {
   createdAt: string;
   updatedAt: string;
   id?: string;
+  files?: [];
 }
 
 export interface UploadedResponse {

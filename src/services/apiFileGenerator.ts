@@ -1,7 +1,7 @@
 import axios from "axios";
 import { localStorageUser } from "../utils/localStorageUser";
 
-import { FileGenerator } from "../interfaces";
+import { FileGenerator, FilesQuery } from "../interfaces";
 import { baseUrl } from "./baseUrl";
 
 const url = baseUrl();
@@ -69,26 +69,70 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-export const generateFile = async (data: Partial<FileGenerator>) => {
-  const response = await axiosInstance.post(`/file-generator`, data);
-  return response.data;
+const handleError = (err: any) => {
+  if (axios.isAxiosError(err)) {
+    console.log(err.response?.data);
+
+    return err.response?.data;
+  } else {
+    console.log(err);
+  }
+};
+
+export const createFile = async (
+  data: Partial<FileGenerator>,
+  files: File[]
+) => {
+  try {
+    const formData = new FormData();
+
+    // Append standard fields
+    const simpleFields: (keyof FileGenerator)[] = [
+      "firstName",
+      "middleName",
+      "lastName",
+      "stateOfOrigin",
+      "religion",
+      "nationality",
+      "ethnicGroup",
+      "phone",
+    ];
+
+    simpleFields.forEach((key) => {
+      if (data[key] !== undefined && data[key] !== null) {
+        formData.append(key, String(data[key]));
+      }
+    });
+
+    // Append files
+    files.forEach((file) => {
+      formData.append("files", file);
+    });
+
+    const response = await axiosInstance.post(`/file-generators`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return response.data;
+  } catch (err) {
+    return handleError(err);
+  }
 };
 
 export const files = async () => {
-  const response = await axiosInstance.get<FileGenerator>(`/file-generator`);
+  const response = await axiosInstance.get<FilesQuery>(`/file-generators`);
   return response.data;
 };
 
 export const updateFile = async (id: string, data: any) => {
   const response = await axiosInstance.patch<FileGenerator>(
-    `/file-generator/${id}`,
+    `/file-generators/${id}`,
     data
   );
   return response.data;
 };
 export const deleteFile = async (id: string) => {
   const response = await axiosInstance.delete<FileGenerator>(
-    `/file-generator/${id}`
+    `/file-generators/${id}`
   );
   return response.data;
 };

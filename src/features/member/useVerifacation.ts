@@ -6,8 +6,7 @@ import { toast } from "react-hot-toast";
 // import { UseVerification, UseVerificationTypes } from "../../interfaces.ts";
 
 interface ErrorResponse {
-  message: string; // Assuming the error response has a 'message' field
-  // Add any other properties that might be in the error response
+  message: string;
 }
 
 interface LoginError extends AxiosError {

@@ -21,6 +21,12 @@ export default function AdminRoute() {
             <span className="">File Generator</span>
           </NavLink>
           <NavLink
+            to="/secret-001/admin-files"
+            className="hover:bg-slate-800 border px-4 py-2"
+          >
+            <span className="">Files</span>
+          </NavLink>
+          <NavLink
             to="/secret-001/signup"
             className="hover:bg-slate-800 border px-4 py-2"
           >
