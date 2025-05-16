@@ -95,7 +95,8 @@ const AdminFile: React.FC<AdminFileProps> = ({ file }) => {
 
               {file && (
                 <p className="text-xs md:text-sm text-gray-600">
-                  <strong>Generated On:</strong> {dateformat(file?.createdAt!)}
+                  <strong>Generated On:</strong>{" "}
+                  {file?.createdAt ? dateformat(file?.createdAt!) : "N/A"}
                 </p>
               )}
             </div>
