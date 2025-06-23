@@ -1,7 +1,7 @@
 import axios from "axios";
 import { localStorageUser } from "../utils/localStorageUser";
 
-import { FileGenerator, FilesQuery } from "../interfaces";
+import { MRNType, MRNQuery } from "../interfaces";
 import { baseUrl } from "./baseUrl";
 
 const url = baseUrl();
@@ -79,19 +79,17 @@ const handleError = (err: any) => {
   }
 };
 
-export const createFile = async (
-  data: Partial<FileGenerator>,
-  files: File[]
-) => {
+export const createFile = async (data: Partial<MRNType>, files: File[]) => {
   try {
     const formData = new FormData();
 
     // Append standard fields
-    const simpleFields: (keyof FileGenerator)[] = [
+    const simpleFields: (keyof MRNType)[] = [
       "firstName",
       "middleName",
       "lastName",
       "stateOfOrigin",
+      "dateOfBirth",
       "religion",
       "nationality",
       "ethnicGroup",
@@ -109,7 +107,48 @@ export const createFile = async (
       formData.append("files", file);
     });
 
-    const response = await axiosInstance.post(`/file-generators`, formData, {
+    const response = await axiosInstance.post(`/mrns`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return response.data;
+  } catch (err) {
+    return handleError(err);
+  }
+};
+
+export const updateFile = async (
+  id: string,
+  data: Partial<MRNType>,
+  files: File[]
+) => {
+  try {
+    const formData = new FormData();
+
+    // Append standard fields
+    const simpleFields: (keyof MRNType)[] = [
+      "firstName",
+      "middleName",
+      "lastName",
+      "stateOfOrigin",
+      "dateOfBirth",
+      "religion",
+      "nationality",
+      "ethnicGroup",
+      "phone",
+    ];
+
+    simpleFields.forEach((key) => {
+      if (data[key] !== undefined && data[key] !== null) {
+        formData.append(key, String(data[key]));
+      }
+    });
+
+    // Append files
+    files.forEach((file) => {
+      formData.append("files", file);
+    });
+
+    const response = await axiosInstance.put(`/mrns/${id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return response.data;
@@ -119,20 +158,15 @@ export const createFile = async (
 };
 
 export const files = async () => {
-  const response = await axiosInstance.get<FilesQuery>(`/file-generators`);
+  const response = await axiosInstance.get<MRNQuery>(`/mrns`);
   return response.data;
 };
 
-export const updateFile = async (id: string, data: any) => {
-  const response = await axiosInstance.patch<FileGenerator>(
-    `/file-generators/${id}`,
-    data
-  );
-  return response.data;
-};
+// export const updateFile = async (id: string, data: any) => {
+//   const response = await axiosInstance.patch<MRNType>(`/mrns/${id}`, data);
+//   return response.data;
+// };
 export const deleteFile = async (id: string) => {
-  const response = await axiosInstance.delete<FileGenerator>(
-    `/file-generators/${id}`
-  );
+  const response = await axiosInstance.delete<MRNType>(`/mrns/${id}`);
   return response.data;
 };

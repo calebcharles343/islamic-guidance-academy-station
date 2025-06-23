@@ -1,12 +1,12 @@
-import { useFiles } from "./useFiles";
+import { useFiles } from "./useMRNs";
 
 import React, { useEffect, useState } from "react";
 import SpinnerMini from "../../ui/SpinnerMini";
 import Table from "../../ui/Table";
 import TableModal from "../../ui/TableModal";
-import { FileGenerator } from "../../interfaces";
+import { MRNType } from "../../interfaces";
 import { BiLogOut, BiSearch } from "react-icons/bi";
-import AdminFile from "./AdminFile";
+import AdminMRN from "./AdminMRN";
 import { useAdminLogout } from "../authenticaton/useAdminLogout";
 
 const Files: React.FC = () => {
@@ -16,8 +16,8 @@ const Files: React.FC = () => {
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [fileId, setFileId] = useState<string | null>("");
-  const [viewFile, setViewFile] = useState<FileGenerator | null>(null);
-  const [filteredFiles, setFilteredFiles] = useState<FileGenerator[]>([]);
+  const [viewFile, setViewFile] = useState<MRNType | null>(null);
+  const [filteredFiles, setFilteredFiles] = useState<MRNType[]>([]);
 
   const { logout, isPending } = useAdminLogout();
 
@@ -25,7 +25,7 @@ const Files: React.FC = () => {
     if (files) {
       const term = searchTerm.toLowerCase();
       const filtered = files.filter(
-        (file: FileGenerator) =>
+        (file: MRNType) =>
           file.fileNumber.toLowerCase().includes(term) ||
           file.lastName.toLowerCase().includes(term) ||
           file.firstName.toLowerCase().includes(term) ||
@@ -127,7 +127,7 @@ const Files: React.FC = () => {
             <div className="max-h-[400px] overflow-y-scroll">
               <Table.Body
                 data={filesWithIds}
-                render={(file: FileGenerator) => (
+                render={(file: MRNType) => (
                   <Table.Row key={file.id}>
                     {/* Sequential ID */}
                     <div className="border-r text-white text-xs md:text-base font-bold px-2 py-1">
@@ -157,8 +157,8 @@ const Files: React.FC = () => {
 
       {fileId && (
         <TableModal onClose={handleCloseModal}>
-          <div className=" min-h-[630px] mt-2 overflow-y-scroll px-2 ">
-            <AdminFile file={viewFile} setFileId={setFileId} />
+          <div className=" max-h-[630px] mt-2 overflow-y-scroll px-2 ">
+            <AdminMRN file={viewFile} setFileId={setFileId} />
           </div>
         </TableModal>
       )}

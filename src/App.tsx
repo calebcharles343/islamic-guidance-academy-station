@@ -20,8 +20,8 @@ import AdminHome from "./pages/AdminHome";
 import VerificationForm from "./features/member/VerificationForm";
 import AdminStations from "./features/station/AdminStations";
 import FormAddStation from "./features/authenticaton/FormAddStation";
-import FormFileGenerator from "./features/fileGenerator/FormFileGenerator";
-import Files from "./features/fileGenerator/Files";
+import FormFileGenerator from "./features/mrn/FormMRN";
+import Files from "./features/mrn/MRNs";
 
 const queryClient = new QueryClient({
   defaultOptions: {

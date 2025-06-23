@@ -14,7 +14,6 @@ export const login = async function (email: string, password: string) {
         password,
       }
     );
-    // console.log(response, "❌❌❌");
 
     return response.data;
   } catch (err) {

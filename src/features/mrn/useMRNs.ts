@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { FilesQuery } from "../../interfaces";
-import { files } from "../../services/apiFileGenerator";
+import { MRNQuery } from "../../interfaces";
+import { files } from "../../services/apiMRN";
 
 export function useFiles() {
-  return useQuery<FilesQuery, Error>({
+  return useQuery<MRNQuery, Error>({
     queryKey: ["files"],
     queryFn: files,
     staleTime: 0,

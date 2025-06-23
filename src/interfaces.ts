@@ -44,17 +44,18 @@ export interface Verification {
   id: string;
 }
 
-export interface FilesQuery {
+export interface MRNQuery {
   status: number;
   message: string;
-  data: { files: FileGenerator[] };
+  data: { files: MRNType[] };
 }
 
-export interface FileGenerator {
+export interface MRNType {
   firstName: string;
   middleName?: string;
   lastName: string;
   stateOfOrigin: string;
+  dateOfBirth: string;
   religion: string;
   mrn: string;
   fileNumber: string;

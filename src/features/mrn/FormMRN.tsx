@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import Input from "../../ui/Input";
 import Label from "../../ui/Label";
-import { FileGenerator } from "../../interfaces";
+import { MRNType } from "../../interfaces";
 import { useLogout } from "../authenticaton/useLogout";
 import { BiLogOut } from "react-icons/bi";
 import SpinnerMini from "../../ui/SpinnerMini";
@@ -10,15 +10,14 @@ import { useCreateFile } from "./useCreateFile";
 import Select from "../../ui/Select";
 import { FileUpload } from "../../ui/FileUpload";
 
-const FormFileGenerator = () => {
-  const [formData, setFormData] = useState<Partial<FileGenerator>>({
+const FormMRNType = () => {
+  const [formData, setFormData] = useState<Partial<MRNType>>({
     firstName: "",
     middleName: "",
     lastName: "",
     stateOfOrigin: "",
+    dateOfBirth: "",
     religion: "",
-    // mrn: "",
-    // fileNumber: "",
     nationality: "",
     ethnicGroup: "",
     phone: "",
@@ -32,8 +31,7 @@ const FormFileGenerator = () => {
   useEffect(() => {
     if (formData.stateOfOrigin && formData.stateOfOrigin.length >= 3) {
       const statePrefix = formData.stateOfOrigin.substring(0, 3).toUpperCase();
-      // In a real app, you would fetch existing files to determine the next number
-      // For now, we'll assume it's the first file (01)
+
       setFormData((prev) => ({ ...prev, fileNumber: `${statePrefix}01` }));
     }
   }, [formData.stateOfOrigin]);
@@ -48,8 +46,6 @@ const FormFileGenerator = () => {
       const religionObj = religions.find((r) => r.id === formData.religion);
       const religionCode = religionObj?.id || "M0";
 
-      // In a real app, you would fetch existing MRNs to determine the next number
-      // For now, we'll assume it's the first in sequence (2501)
       setFormData((prev) => ({
         ...prev,
         mrn: `m263-${yearPart}-2501${religionCode}`,
@@ -57,15 +53,8 @@ const FormFileGenerator = () => {
     }
   }, [formData.religion]);
 
-  // const handleInputChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  // ) => {
-  //   const { id, value } = e.target;
-  //   setFormData((prev) => ({ ...prev, [id]: value }));
-  // };
-
   const handleInputChange = (
-    field: keyof FileGenerator,
+    field: keyof MRNType,
     value: string | string[] | number
   ) => {
     setFormData({ ...formData, [field]: value });
@@ -179,6 +168,19 @@ const FormFileGenerator = () => {
                   />
                 </div>
                 <div>
+                  <Label htmlFor="dateOfBirth">Date of birth</Label>
+                  <Input
+                    id="dateOfBirth"
+                    type="text"
+                    placeholder="Enter your date of birth"
+                    value={formData.dateOfBirth}
+                    onChange={(e) =>
+                      handleInputChange("dateOfBirth", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+                <div>
                   <Label htmlFor="nationality">Nationality</Label>
                   <Input
                     id="nationality"
@@ -261,4 +263,4 @@ const FormFileGenerator = () => {
   );
 };
 
-export default FormFileGenerator;
+export default FormMRNType;

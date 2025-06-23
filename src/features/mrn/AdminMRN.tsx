@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { FileGenerator } from "../../interfaces";
+import { MRNType } from "../../interfaces";
 // import { useStation } from "../station/useStation";
 // import TableModal from "../../ui/TableModal";
 // import EditMemberForm from "./EditMemberForm";
@@ -7,47 +7,50 @@ import { FileGenerator } from "../../interfaces";
 // import { useDeleteMember } from "./useDeleteMember";
 import { dateformat } from "../../utils/dateFormat";
 import FileAttachmentContainer from "../../ui/FileAttachmentContainer";
+import FormEditMRN from "./FormEditMRN";
+import TableModal from "../../ui/TableModal";
+import Swal from "sweetalert2";
+import { useDeleteFile } from "./useDeleteMRN";
 
 interface AdminFileProps {
-  file: FileGenerator | null;
+  file: MRNType | null;
   setFileId?: Dispatch<SetStateAction<string | null>>;
 }
 
-const AdminFile: React.FC<AdminFileProps> = ({ file }) => {
+const AdminFile: React.FC<AdminFileProps> = ({ file, setFileId }) => {
   // const { data: station, isLoading } = useStation(member?.station_id!);
 
-  // const [isEdit, setIsEdit] = useState<boolean>(false);
-  const [isEdit] = useState<boolean>(false);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const filesAtt = file?.files || [];
 
-  // const handleCloseModal = () => {
-  //   setIsEdit(false);
-  // };
+  const handleCloseModal = () => {
+    setIsEdit(false);
+  };
 
-  // const { deleteMember } = useDeleteMember();
+  const { deleteFile } = useDeleteFile();
 
-  // const handleDeleteMember = (e: React.MouseEvent) => {
-  //   e.stopPropagation();
+  const handleDeleteMRN = (e: React.MouseEvent) => {
+    e.stopPropagation();
 
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "Do you want to delete this entry?",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#052859",
-  //     cancelButtonColor: "#DC3340",
-  //     confirmButtonText: "Yes, delete it!",
-  //     customClass: { popup: "custom-style" },
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       deleteMember(member?.id!);
-  //       setIsEdit(false);
-  //       if (setMembertId) {
-  //         setMembertId(null);
-  //       }
-  //     }
-  //   });
-  // };
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this entry?",
+      showCancelButton: true,
+      confirmButtonColor: "#052859",
+      cancelButtonColor: "#DC3340",
+      confirmButtonText: "Yes, delete it!",
+      customClass: { popup: "custom-style" },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteFile(file?.id!);
+        setIsEdit(false);
+        if (setFileId) {
+          setFileId(null);
+        }
+      }
+    });
+  };
 
   // console.log(member?.createdAt);
 
@@ -73,7 +76,7 @@ const AdminFile: React.FC<AdminFileProps> = ({ file }) => {
             }}
           >
             <h2 className="text-center font-semibold text-base md:text-lg text-gray-800 mb-2">
-              {`${file?.firstName} ${file?.lastName}`}
+              {`${file?.firstName} ${file?.middleName} ${file?.lastName}`}
             </h2>
 
             <div className="flex flex-col gap-1">
@@ -92,6 +95,9 @@ const AdminFile: React.FC<AdminFileProps> = ({ file }) => {
               <p className="text-xs md:text-sm text-gray-600">
                 <strong>State of Origin:</strong> {file?.stateOfOrigin}
               </p>
+              <p className="text-xs md:text-sm text-gray-600">
+                <strong>Date of Birth:</strong> {file?.dateOfBirth}
+              </p>
 
               {file && (
                 <p className="text-xs md:text-sm text-gray-600">
@@ -107,7 +113,7 @@ const AdminFile: React.FC<AdminFileProps> = ({ file }) => {
             <FileAttachmentContainer files={filesAtt} />
           )}
 
-          {/* <div className="text-sm flex items-center justify-center gap-4 p-1">
+          <div className="text-sm flex items-center justify-center gap-4 p-1">
             <button
               className="w-24 text-blue-500 border border-blue-500  py-1 px-2 rounded-md"
               onClick={() => setIsEdit(true)}
@@ -116,21 +122,21 @@ const AdminFile: React.FC<AdminFileProps> = ({ file }) => {
             </button>{" "}
             <button
               className="w-24 text-red-500 border border-red-500 p-1 rounded-md"
-              // onClick={handleDeletefile}
+              onClick={handleDeleteMRN}
             >
               Delete
             </button>
-          </div> */}
+          </div>
         </div>
       )}
-      {/* 
+
       {isEdit && (
         <TableModal onClose={handleCloseModal}>
-          <div className="scale-90">
-            <EditFileForm file={file!} setIsEdit={setIsEdit} />
+          <div className="pt-12 mt-2">
+            <FormEditMRN file={file!} setIsEdit={setIsEdit} />
           </div>
         </TableModal>
-      )} */}
+      )}
     </>
   );
 };
