@@ -10,7 +10,7 @@ import { useCreateFile } from "./useCreateFile";
 import Select from "../../ui/Select";
 import { FileUpload } from "../../ui/FileUpload";
 
-const FormMRNType = () => {
+const FormMRN = () => {
   const [formData, setFormData] = useState<Partial<MRNType>>({
     firstName: "",
     middleName: "",
@@ -24,6 +24,8 @@ const FormMRNType = () => {
   });
 
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [fileError, setFileError] = useState("");
 
   const { create, isPending } = useCreateFile(); // Hook for creating file
 
@@ -58,11 +60,56 @@ const FormMRNType = () => {
     value: string | string[] | number
   ) => {
     setFormData({ ...formData, [field]: value });
+    // Clear error when field is updated
+    if (errors[field]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.firstName) newErrors.firstName = "First name is required";
+    if (!formData.middleName) newErrors.middleName = "Middle name is required";
+    if (!formData.lastName) newErrors.lastName = "Last name is required";
+    if (!formData.stateOfOrigin)
+      newErrors.stateOfOrigin = "State of origin is required";
+    if (!formData.dateOfBirth)
+      newErrors.dateOfBirth = "Date of birth is required";
+    if (!formData.nationality)
+      newErrors.nationality = "Nationality is required";
+    if (!formData.religion) newErrors.religion = "Religion is required";
+    if (!formData.ethnicGroup)
+      newErrors.ethnicGroup = "Ethnic group is required";
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^\d{11}$/.test(formData.phone)) {
+      newErrors.phone = "Phone number must be 11 digits";
+    }
+
+    setErrors(newErrors);
+
+    // Validate files
+    if (selectedFiles.length < 1) {
+      setFileError("At least one file is required");
+      return false;
+    } else {
+      setFileError("");
+    }
+
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (!validateForm()) {
+      return;
+    }
 
     create({ data: formData, files: selectedFiles });
   };
@@ -116,6 +163,9 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.firstName && (
+                    <p className="text-red-500 text-sm">{errors.firstName}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="middleName">Middle Name</Label>
@@ -129,6 +179,9 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.middleName && (
+                    <p className="text-red-500 text-sm">{errors.middleName}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="lastName">Last Name</Label>
@@ -142,6 +195,9 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.lastName && (
+                    <p className="text-red-500 text-sm">{errors.lastName}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="stateOfOrigin">State Of Origin</Label>
@@ -166,6 +222,11 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.stateOfOrigin && (
+                    <p className="text-red-500 text-sm">
+                      {errors.stateOfOrigin}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="dateOfBirth">Date of birth</Label>
@@ -179,6 +240,9 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.dateOfBirth && (
+                    <p className="text-red-500 text-sm">{errors.dateOfBirth}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="nationality">Nationality</Label>
@@ -192,6 +256,9 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.nationality && (
+                    <p className="text-red-500 text-sm">{errors.nationality}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="religion">Religion</Label>
@@ -213,6 +280,9 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.religion && (
+                    <p className="text-red-500 text-sm">{errors.religion}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="ethnicGroup">Ethnic Group</Label>
@@ -226,6 +296,9 @@ const FormMRNType = () => {
                     }
                     required
                   />
+                  {errors.ethnicGroup && (
+                    <p className="text-red-500 text-sm">{errors.ethnicGroup}</p>
+                  )}
                 </div>
                 <div>
                   <Label htmlFor="phone">Phone</Label>
@@ -238,6 +311,9 @@ const FormMRNType = () => {
                     onChange={(e) => handleInputChange("phone", e.target.value)}
                     required
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 text-sm">{errors.phone}</p>
+                  )}
                 </div>
               </div>
 
@@ -247,6 +323,7 @@ const FormMRNType = () => {
                 accept=".jpg,.png,.pdf,.xlsx,.docx"
                 multiple={true}
               />
+              {fileError && <p className="text-red-500 text-sm">{fileError}</p>}
 
               <button
                 type="submit"
@@ -263,4 +340,4 @@ const FormMRNType = () => {
   );
 };
 
-export default FormMRNType;
+export default FormMRN;
