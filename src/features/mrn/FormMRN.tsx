@@ -39,21 +39,21 @@ const FormMRN = () => {
   }, [formData.stateOfOrigin]);
 
   // Generate MRN when religion changes
-  useEffect(() => {
-    if (formData.religion) {
-      const currentYear = new Date().getFullYear();
-      const yearPart = (currentYear - 578).toString(); // 2023 - 578 = 1445 (Islamic calendar)
+  // useEffect(() => {
+  //   if (formData.religion) {
+  //     // const currentYear = new Date().getFullYear();
+  //     // const yearPart = (currentYear - 578).toString(); // 2023 - 578 = 1445 (Islamic calendar)
 
-      // Get religion code (assuming religions have M0, M1, M2 in their ids)
-      const religionObj = religions.find((r) => r.id === formData.religion);
-      const religionCode = religionObj?.id || "M0";
+  //     // Get religion code (assuming religions have M0, M1, M2 in their ids)
+  //     // const religionObj = religions.find((r) => r.id === formData.religion);
+  //     // const religionCode = religionObj?.id || "M0";
 
-      setFormData((prev) => ({
-        ...prev,
-        mrn: `m263-${yearPart}-2501${religionCode}`,
-      }));
-    }
-  }, [formData.religion]);
+  //     // setFormData((prev) => ({
+  //     //   ...prev,
+  //     //   mrn: `m263-${yearPart}-2501${religionCode}`,
+  //     // }));
+  //   }
+  // }, [formData.religion]);
 
   const handleInputChange = (
     field: keyof MRNType,
