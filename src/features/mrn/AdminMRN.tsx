@@ -1,10 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { MRNType } from "../../interfaces";
-// import { useStation } from "../station/useStation";
-// import TableModal from "../../ui/TableModal";
-// import EditMemberForm from "./EditMemberForm";
-// import Swal from "sweetalert2";
-// import { useDeleteMember } from "./useDeleteMember";
 import { dateformat } from "../../utils/dateFormat";
 import FileAttachmentContainer from "../../ui/FileAttachmentContainer";
 import FormEditMRN from "./FormEditMRN";
@@ -18,8 +13,6 @@ interface AdminFileProps {
 }
 
 const AdminFile: React.FC<AdminFileProps> = ({ file, setFileId }) => {
-  // const { data: station, isLoading } = useStation(member?.station_id!);
-
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const filesAtt = file?.files || [];
@@ -52,9 +45,6 @@ const AdminFile: React.FC<AdminFileProps> = ({ file, setFileId }) => {
     });
   };
 
-  // console.log(member?.createdAt);
-
-  // }
   return (
     <>
       {!isEdit && (
@@ -62,11 +52,6 @@ const AdminFile: React.FC<AdminFileProps> = ({ file, setFileId }) => {
           className="w-full md:w-[500px]  bg-white shadow-lg rounded-lg overflow-hidden pb-4"
           style={{ fontFamily: "Roboto", letterSpacing: "0.6px" }}
         >
-          {/* <img
-            className="w-full h-36 md:h-44 object-contain"
-            src={member?.photo}
-            alt={`${member?.name}'s photo`}
-          /> */}
           <div
             className="p-4"
             style={{

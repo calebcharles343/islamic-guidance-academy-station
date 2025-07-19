@@ -1,9 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-// import { useNavigate } from "react-router-dom";
 import { verification as verificationApi } from "../../services/apiVerificattion.ts";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-hot-toast";
-// import { UseVerification, UseVerificationTypes } from "../../interfaces.ts";
 
 interface ErrorResponse {
   message: string;
@@ -14,8 +12,6 @@ interface LoginError extends AxiosError {
 }
 
 export function useVerification() {
-  // const navigate = useNavigate();
-
   const {
     mutate: verify,
     isPending,
@@ -27,11 +23,7 @@ export function useVerification() {
       console.log(data);
 
       if (data.status === 201) {
-        // const userData = data.data.user;
-
         toast.success("Verification successful");
-        // Navigate to home page after successful login
-        // navigate("/login", { replace: true });
       } else {
         if (data.message === "Missing required parameter - file") {
           toast.error(`Please provide photo`);

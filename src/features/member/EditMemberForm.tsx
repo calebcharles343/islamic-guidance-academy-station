@@ -6,8 +6,6 @@ import toast from "react-hot-toast/headless";
 import { useUpdateMember } from "./useUpdateMember";
 import Label from "../../ui/Label";
 import Input from "../../ui/Input";
-// import { useLogout } from "./useLogout";
-// import { BiLogOut } from "react-icons/bi";
 
 interface EditVerificationFormProps {
   member: Verification;
@@ -71,12 +69,6 @@ const EditMemberForm: React.FC<EditVerificationFormProps> = ({
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    // if (previewSource === null) {
-    //   toast.error("Please provide your photo");
-    //   return;
-    // }
-
     const data = {
       form: formData,
       photo: previewSource,

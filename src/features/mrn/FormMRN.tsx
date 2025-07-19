@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import Input from "../../ui/Input";
 import Label from "../../ui/Label";
 import { MRNType } from "../../interfaces";
@@ -28,32 +28,6 @@ const FormMRN = () => {
   const [fileError, setFileError] = useState("");
 
   const { create, isPending } = useCreateFile(); // Hook for creating file
-
-  // Generate file number when state of origin changes
-  useEffect(() => {
-    if (formData.stateOfOrigin && formData.stateOfOrigin.length >= 3) {
-      const statePrefix = formData.stateOfOrigin.substring(0, 3).toUpperCase();
-
-      setFormData((prev) => ({ ...prev, fileNumber: `${statePrefix}01` }));
-    }
-  }, [formData.stateOfOrigin]);
-
-  // Generate MRN when religion changes
-  // useEffect(() => {
-  //   if (formData.religion) {
-  //     // const currentYear = new Date().getFullYear();
-  //     // const yearPart = (currentYear - 578).toString(); // 2023 - 578 = 1445 (Islamic calendar)
-
-  //     // Get religion code (assuming religions have M0, M1, M2 in their ids)
-  //     // const religionObj = religions.find((r) => r.id === formData.religion);
-  //     // const religionCode = religionObj?.id || "M0";
-
-  //     // setFormData((prev) => ({
-  //     //   ...prev,
-  //     //   mrn: `m263-${yearPart}-2501${religionCode}`,
-  //     // }));
-  //   }
-  // }, [formData.religion]);
 
   const handleInputChange = (
     field: keyof MRNType,

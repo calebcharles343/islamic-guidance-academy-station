@@ -66,11 +66,6 @@ const VerificationForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // if (previewSource === null) {
-    //   toast.error("Please provide your photo");
-    //   return;
-    // }
-
     const data = {
       form: formData,
       photo: previewSource,

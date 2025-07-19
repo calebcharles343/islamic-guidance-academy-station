@@ -162,10 +162,6 @@ export const files = async () => {
   return response.data;
 };
 
-// export const updateFile = async (id: string, data: any) => {
-//   const response = await axiosInstance.patch<MRNType>(`/mrns/${id}`, data);
-//   return response.data;
-// };
 export const deleteFile = async (id: string) => {
   const response = await axiosInstance.delete<MRNType>(`/mrns/${id}`);
   return response.data;

@@ -2,8 +2,6 @@ import { FormEvent, useEffect, useState } from "react";
 import Input from "../../ui/Input";
 import Label from "../../ui/Label";
 import { MRNType } from "../../interfaces";
-// import { useLogout } from "../authenticaton/useLogout";
-// import { BiLogOut } from "react-icons/bi";
 import SpinnerMini from "../../ui/SpinnerMini";
 import { religions, states } from "../station/data/stationData";
 import Select from "../../ui/Select";

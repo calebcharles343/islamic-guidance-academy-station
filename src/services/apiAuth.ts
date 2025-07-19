@@ -151,29 +151,3 @@ export const updateStationPassword = async function (
     }
   }
 };
-
-// export const updateUser = async function (
-//   UserId: number | undefined,
-//   data: UpdateUserType
-// ) {
-//   console.log("❌updateUser", data);
-
-//   try {
-//     const response = await axios.patch<UpdateUserType>(
-//       `${apiURL}/users/${UserId}`,
-//       data,
-//       { headers }
-//     );
-//     console.log(response.data);
-
-//     return response.data;
-//   } catch (err) {
-//     // ErrorHandler(err);
-//     if (axios.isAxiosError(err)) {
-//       return err.response?.data;
-//     } else {
-//       // Handle other errors
-//       console.log(err);
-//     }
-//   }
-// };
