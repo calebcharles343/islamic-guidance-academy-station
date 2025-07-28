@@ -23,14 +23,14 @@ const getToken = () => {
   return token;
 };
 
-console.log(url, getToken());
+// console.log(url, getToken());
 
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      console.log("Token attached to request:", token); // Debugging token attachment
+      // console.log("Token attached to request:", token); // Debugging token attachment
     } else {
       console.error("No token found, request not authorized");
     }

@@ -14,7 +14,7 @@ export default function AdminRoute() {
     <div className="bg-blue-500 h-screen flex items-center justify-center text-white">
       <div className="flex flex-col items-center gap-2">
         <div className="flex flex-col items-center gap-4">
-          <NavLink
+          {/* <NavLink
             to="/secret-001/file-generator"
             className="hover:bg-slate-800 border px-4 py-2"
           >
@@ -25,7 +25,7 @@ export default function AdminRoute() {
             className="hover:bg-slate-800 border px-4 py-2"
           >
             <span className="">MRNs</span>
-          </NavLink>
+          </NavLink> */}
           <NavLink
             to="/secret-001/signup"
             className="hover:bg-slate-800 border px-4 py-2"

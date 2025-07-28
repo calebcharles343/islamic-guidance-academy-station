@@ -67,6 +67,7 @@ export interface MRNType {
   updatedAt: string;
   id?: string;
   files?: [];
+  createdBy: StationTypes;
 }
 
 export interface UploadedResponse {

@@ -20,8 +20,8 @@ import AdminHome from "./pages/AdminHome";
 import VerificationForm from "./features/member/VerificationForm";
 import AdminStations from "./features/station/AdminStations";
 import FormAddStation from "./features/authenticaton/FormAddStation";
-import FormFileGenerator from "./features/mrn/FormMRN";
-import Files from "./features/mrn/MRNs";
+import FormMRN from "./features/mrn/FormMRN";
+import MRNs from "./features/mrn/MRNs";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +40,16 @@ const router = createBrowserRouter([
       </AuthGuard>
     ),
     children: [
+      {
+        path: "/mrn-generator",
+        element: <FormMRN />,
+      },
+
+      {
+        path: "/mrns",
+        element: <MRNs />,
+      },
+
       { path: "/", element: <Navigate to="home" /> }, // Redirect "/" to "/home"
       {
         path: "home",
@@ -78,7 +88,7 @@ const router = createBrowserRouter([
     path: "secret-001/file-generator",
     element: (
       <AdminAuthGuard>
-        <FormFileGenerator />
+        <FormMRN />
       </AdminAuthGuard>
     ),
   },
@@ -102,7 +112,7 @@ const router = createBrowserRouter([
     path: "secret-001/admin-files",
     element: (
       <AdminAuthGuard>
-        <Files />
+        <MRNs />
       </AdminAuthGuard>
     ),
   },

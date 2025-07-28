@@ -12,28 +12,29 @@ import { useAdminLogout } from "../authenticaton/useAdminLogout";
 const Files: React.FC = () => {
   const { data, isLoading } = useFiles();
 
-  const files = data?.data.files || [];
+  const files = data?.data.files; // now `files` is either `undefined` or the real array
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [fileId, setFileId] = useState<string | null>("");
+  const [fileId, setMRNId] = useState<string | null>("");
   const [viewFile, setViewFile] = useState<MRNType | null>(null);
   const [filteredFiles, setFilteredFiles] = useState<MRNType[]>([]);
 
   const { logout, isPending } = useAdminLogout();
 
   useEffect(() => {
-    if (files) {
-      const term = searchTerm.toLowerCase();
-      const filtered = files.filter(
-        (file: MRNType) =>
-          file.fileNumber.toLowerCase().includes(term) ||
-          file.lastName.toLowerCase().includes(term) ||
-          file.firstName.toLowerCase().includes(term) ||
-          file.phone.toLowerCase().includes(term) ||
-          file.mrn.toLowerCase().includes(term)
-      );
-      setFilteredFiles(filtered);
-    }
+    // only run when we actually have an array
+    if (!files) return;
+
+    const term = searchTerm.toLowerCase();
+    const filtered = files.filter(
+      (file) =>
+        file.fileNumber.toLowerCase().includes(term) ||
+        file.lastName.toLowerCase().includes(term) ||
+        file.firstName.toLowerCase().includes(term) ||
+        file.phone.toLowerCase().includes(term) ||
+        file.mrn.toLowerCase().includes(term)
+    );
+    setFilteredFiles(filtered);
   }, [searchTerm, files]);
 
   useEffect(() => {
@@ -50,11 +51,11 @@ const Files: React.FC = () => {
   }));
 
   const handleViewClick = (id: string) => {
-    setFileId(id);
+    setMRNId(id);
   };
 
   const handleCloseModal = () => {
-    setFileId(null);
+    setMRNId(null);
   };
 
   const handleLogout = async () => {
@@ -158,7 +159,7 @@ const Files: React.FC = () => {
       {fileId && (
         <TableModal onClose={handleCloseModal}>
           <div className=" max-h-[630px] mt-2 overflow-y-scroll px-2 ">
-            <AdminMRN file={viewFile} setFileId={setFileId} />
+            <AdminMRN mrn={viewFile} setMRNId={setMRNId} />
           </div>
         </TableModal>
       )}
