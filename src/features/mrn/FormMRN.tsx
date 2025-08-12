@@ -199,7 +199,7 @@ const FormMRN = () => {
                     <Input
                       id='firstName'
                       type='text'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       placeholder='Enter your first name'
                       value={formData.firstName}
                       onChange={(e) =>
@@ -218,7 +218,7 @@ const FormMRN = () => {
                       id='middleName'
                       type='text'
                       placeholder='Enter your middle name'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.middleName}
                       onChange={(e) =>
                         handleInputChange('middleName', e.target.value)
@@ -238,7 +238,7 @@ const FormMRN = () => {
                       id='lastName'
                       type='text'
                       placeholder='Enter your last name'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.lastName}
                       onChange={(e) =>
                         handleInputChange('lastName', e.target.value)
@@ -256,7 +256,7 @@ const FormMRN = () => {
                       id='familyName'
                       type='text'
                       placeholder='Enter your family name'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.familyName || ''}
                       onChange={(e) =>
                         handleInputChange('familyName', e.target.value)
@@ -276,7 +276,7 @@ const FormMRN = () => {
                       filterable
                       id='stateOfOrigin'
                       customLabel='Select A State'
-                      className='w-full rounded-lg py-2'
+                      className='w-full rounded-lg py-2 text-gray-700'
                       value={formData.stateOfOrigin || ''}
                       onChange={(value) =>
                         handleInputChange('stateOfOrigin', value)
@@ -323,7 +323,7 @@ const FormMRN = () => {
                       id='nationality'
                       type='text'
                       placeholder='Enter your nationality'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.nationality || ''}
                       onChange={(e) =>
                         handleInputChange('nationality', e.target.value)
@@ -343,7 +343,7 @@ const FormMRN = () => {
                       clearable
                       id='religion'
                       customLabel='Select Religion'
-                      className='w-full rounded-lg py-2'
+                      className='w-full rounded-lg py-2 text-gray-700'
                       value={formData.religion || ''}
                       onChange={(value) => handleInputChange('religion', value)}
                       options={
@@ -366,7 +366,7 @@ const FormMRN = () => {
                       id='ethnicGroup'
                       type='text'
                       placeholder='Enter your Ethnic Group'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.ethnicGroup || ''}
                       onChange={(e) =>
                         handleInputChange('ethnicGroup', e.target.value)
@@ -386,7 +386,7 @@ const FormMRN = () => {
                       id='address'
                       type='text'
                       placeholder='Enter address'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.address || ''}
                       onChange={(e) =>
                         handleInputChange('address', e.target.value)
@@ -405,7 +405,7 @@ const FormMRN = () => {
                       id='residentialAddress'
                       type='text'
                       placeholder='Enter residential address'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.residentialAddress || ''}
                       onChange={(e) =>
                         handleInputChange('residentialAddress', e.target.value)
@@ -424,7 +424,7 @@ const FormMRN = () => {
                       id='phone'
                       type='tel'
                       placeholder='Enter your phone number'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.phone || ''}
                       pattern='^[0-9]{11}$'
                       maxLength={11}
@@ -447,7 +447,7 @@ const FormMRN = () => {
                       id='bvn'
                       type='text'
                       placeholder='Enter BVN'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.bvn || ''}
                       pattern='^[0-9]{11}$'
                       maxLength={11}
@@ -469,7 +469,7 @@ const FormMRN = () => {
                       id='nin'
                       type='text'
                       placeholder='Enter NIN'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.nin || ''}
                       pattern='^[0-9]{11}$'
                       maxLength={11}
@@ -491,7 +491,7 @@ const FormMRN = () => {
                       id='politicalParty'
                       type='text'
                       placeholder='e.g., APC, PDP'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.politicalParty || ''}
                       onChange={(e) =>
                         handleInputChange('politicalParty', e.target.value)
@@ -510,7 +510,7 @@ const FormMRN = () => {
                       id='relativePhone'
                       type='tel'
                       placeholder="Enter relative's phone"
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.relativePhone || ''}
                       pattern='^[0-9]{7,15}$'
                       maxLength={15}
@@ -536,7 +536,7 @@ const FormMRN = () => {
                       id='assistanceOfficerRN'
                       type='text'
                       placeholder='Enter officer reference'
-                      className='w-full px-2 rounded-lg py-2'
+                      className='w-full px-2 rounded-lg py-2 text-gray-700'
                       value={formData.assistanceOfficerRN || ''}
                       onChange={(e) =>
                         handleInputChange('assistanceOfficerRN', e.target.value)
