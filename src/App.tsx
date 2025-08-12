@@ -1,27 +1,23 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
-import PageNotFound from "./pages/PageNotFound";
-import Home from "./pages/Home";
-import AppLayout from "./ui/AppLayout";
-import LoginForm from "./features/authenticaton/LoginForm";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "react-hot-toast";
-import AuthGuard from "./features/authenticaton/AuthGuard";
+import PageNotFound from './pages/PageNotFound'
+import Home from './pages/Home'
+import AppLayout from './ui/AppLayout'
+import LoginForm from './features/authenticaton/LoginForm'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast'
+import AuthGuard from './features/authenticaton/AuthGuard'
 
-import MembersTable from "./pages/MembersTable";
-import Admin from "./pages/Admin";
-import AdminLoginForm from "./features/authenticaton/AdminLoginForm";
-import AdminAuthGuard from "./features/authenticaton/AdminAuthGuard";
-import AdminHome from "./pages/AdminHome";
-import VerificationForm from "./features/member/VerificationForm";
-import AdminStations from "./features/station/AdminStations";
-import FormAddStation from "./features/authenticaton/FormAddStation";
-import FormMRN from "./features/mrn/FormMRN";
-import MRNs from "./features/mrn/MRNs";
+import MembersTable from './pages/MembersTable'
+import Admin from './pages/Admin'
+import AdminLoginForm from './features/authenticaton/AdminLoginForm'
+import AdminAuthGuard from './features/authenticaton/AdminAuthGuard'
+import AdminHome from './pages/AdminHome'
+import VerificationForm from './features/member/VerificationForm'
+import AdminStations from './features/station/AdminStations'
+import FormAddStation from './features/authenticaton/FormAddStation'
+import FormMRN from './features/mrn/FormMRN'
+import MRNs from './features/mrn/MRNs'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,9 +26,17 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: true,
     },
   },
-});
+})
 
+// App.tsx (router section)
 const router = createBrowserRouter([
+  // PUBLIC / KIOSK ROUTE
+  {
+    path: '/mrn-generator',
+    element: <FormMRN />, // not wrapped by AuthGuard
+  },
+
+  // AUTH-GUARDED APP
   {
     element: (
       <AuthGuard>
@@ -40,36 +44,25 @@ const router = createBrowserRouter([
       </AuthGuard>
     ),
     children: [
+      // keep these as you had them
       {
-        path: "/mrn-generator",
-        element: <FormMRN />,
-      },
-
-      {
-        path: "/mrns",
+        path: '/mrns',
         element: <MRNs />,
       },
-
-      { path: "/", element: <Navigate to="home" /> }, // Redirect "/" to "/home"
-      {
-        path: "home",
-        element: <Home />,
-      },
-      {
-        path: "verification",
-        element: <VerificationForm />,
-      },
+      { path: '/', element: <Navigate to='home' /> },
+      { path: 'home', element: <Home /> },
+      { path: 'verification', element: <VerificationForm /> },
     ],
   },
 
+  // PUBLIC (unchanged)
+  { path: 'members', element: <MembersTable /> },
+  { path: 'login', element: <LoginForm /> },
+  { path: 'secret-001/admin-login', element: <AdminLoginForm /> },
+
+  // ADMIN (unchanged)
   {
-    path: "members",
-    element: <MembersTable />,
-  },
-  { path: "login", element: <LoginForm /> },
-  { path: "secret-001/admin-login", element: <AdminLoginForm /> },
-  {
-    path: "admin-home",
+    path: 'admin-home',
     element: (
       <AdminAuthGuard>
         <AdminHome />
@@ -77,7 +70,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "secret-001/admin-stations",
+    path: 'secret-001/admin-stations',
     element: (
       <AdminAuthGuard>
         <AdminStations />
@@ -85,7 +78,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "secret-001/file-generator",
+    path: 'secret-001/file-generator',
     element: (
       <AdminAuthGuard>
         <FormMRN />
@@ -93,7 +86,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "secret-001/signup",
+    path: 'secret-001/signup',
     element: (
       <AdminAuthGuard>
         <FormAddStation />
@@ -101,7 +94,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "secret-001/admin-members",
+    path: 'secret-001/admin-members',
     element: (
       <AdminAuthGuard>
         <Admin />
@@ -109,7 +102,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "secret-001/admin-files",
+    path: 'secret-001/admin-files',
     element: (
       <AdminAuthGuard>
         <MRNs />
@@ -117,17 +110,17 @@ const router = createBrowserRouter([
     ),
   },
 
-  { path: "*", element: <PageNotFound /> }, // Catch-all route for 404
-]);
+  { path: '*', element: <PageNotFound /> },
+])
 
 const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
       <Toaster
-        position="top-center"
+        position='top-center'
         gutter={12}
-        containerStyle={{ margin: "8px" }}
+        containerStyle={{ margin: '8px' }}
         toastOptions={{
           success: {
             duration: 3000,
@@ -136,16 +129,16 @@ const App: React.FC = () => {
             duration: 5000,
           },
           style: {
-            fontSize: "12px",
-            maxWidth: "500px",
-            padding: "16px 24px",
-            backgroundColor: "white",
-            color: "var(--color-grey-700)",
+            fontSize: '12px',
+            maxWidth: '500px',
+            padding: '16px 24px',
+            backgroundColor: 'white',
+            color: 'var(--color-grey-700)',
           },
         }}
       />
     </QueryClientProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
