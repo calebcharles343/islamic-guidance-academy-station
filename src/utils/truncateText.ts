@@ -1,8 +1,8 @@
 export const truncateText = (
   text: string,
   maxLength: number,
-  ellipsis: string = "..."
+  ellipsis = '...'
 ) => {
-  if (text.length <= maxLength) return text;
-  return text.slice(0, maxLength) + ellipsis;
-};
+  if (text.length <= maxLength) return text
+  return text.slice(0, maxLength) + ellipsis
+}

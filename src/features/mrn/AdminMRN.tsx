@@ -1,112 +1,112 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
-import { MRNType } from "../../interfaces";
-import { dateformat } from "../../utils/dateFormat";
-import FileAttachmentContainer from "../../ui/FileAttachmentContainer";
-import FormEditMRN from "./FormEditMRN";
-import TableModal from "../../ui/TableModal";
-import Swal from "sweetalert2";
-import { useDeleteFile } from "./useDeleteMRN";
+import React, { Dispatch, SetStateAction, useState } from 'react'
+import { MRNType } from '../../interfaces'
+import { dateformat } from '../../utils/dateFormat'
+import FileAttachmentContainer from '../../ui/FileAttachmentContainer'
+import FormEditMRN from './FormEditMRN'
+import TableModal from '../../ui/TableModal'
+import Swal from 'sweetalert2'
+import { useDeleteFile } from './useDeleteMRN'
 
 interface AdminFileProps {
-  mrn: MRNType | null;
-  setMRNId?: Dispatch<SetStateAction<string | null>>;
+  mrn: MRNType | null
+  setMRNId?: Dispatch<SetStateAction<string | null>>
 }
 
 const AdminFile: React.FC<AdminFileProps> = ({ mrn, setMRNId }) => {
-  const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [isEdit, setIsEdit] = useState<boolean>(false)
 
-  const filesAtt = mrn?.files || [];
+  const filesAtt = mrn?.files || []
 
   const handleCloseModal = () => {
-    setIsEdit(false);
-  };
+    setIsEdit(false)
+  }
 
-  const { deleteFile } = useDeleteFile();
+  const { deleteFile } = useDeleteFile()
 
   const handleDeleteMRN = (e: React.MouseEvent) => {
-    e.stopPropagation();
+    e.stopPropagation()
 
     Swal.fire({
-      title: "Are you sure?",
-      text: "Do you want to delete this entry?",
+      title: 'Are you sure?',
+      text: 'Do you want to delete this entry?',
       showCancelButton: true,
-      confirmButtonColor: "#052859",
-      cancelButtonColor: "#DC3340",
-      confirmButtonText: "Yes, delete it!",
-      customClass: { popup: "custom-style" },
+      confirmButtonColor: '#052859',
+      cancelButtonColor: '#DC3340',
+      confirmButtonText: 'Yes, delete it!',
+      customClass: { popup: 'custom-style' },
     }).then((result) => {
-      if (result.isConfirmed) {
-        deleteFile(mrn?.id!);
-        setIsEdit(false);
+      if (result.isConfirmed && mrn?.id) {
+        deleteFile(mrn.id)
+        setIsEdit(false)
         if (setMRNId) {
-          setMRNId(null);
+          setMRNId(null)
         }
       }
-    });
-  };
+    })
+  }
 
-  const creator = mrn?.createdBy;
+  const creator = mrn?.createdBy
 
   return (
     <>
       {!isEdit && (
         <div
-          className="w-full md:w-[500px]  bg-white shadow-lg rounded-lg overflow-hidden pb-4"
-          style={{ fontFamily: "Roboto", letterSpacing: "0.6px" }}
+          className='w-full md:w-[500px]  bg-white shadow-lg rounded-lg overflow-hidden pb-4'
+          style={{ fontFamily: 'Roboto', letterSpacing: '0.6px' }}
         >
           <div
-            className="p-4"
+            className='p-4'
             style={{
-              wordBreak: "break-word",
-              overflowWrap: "break-word",
-              whiteSpace: "pre-wrap",
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word',
+              whiteSpace: 'pre-wrap',
             }}
           >
-            <h2 className="text-center font-semibold text-base md:text-lg text-gray-800 mb-2">
+            <h2 className='text-center font-semibold text-base md:text-lg text-gray-800 mb-2'>
               {`${mrn?.firstName} ${mrn?.middleName} ${mrn?.lastName}`}
             </h2>
 
-            <div className="flex flex-col gap-1">
-              <p className="text-xs md:text-sm text-gray-600">
+            <div className='flex flex-col gap-1'>
+              <p className='text-xs md:text-sm text-gray-600'>
                 <strong>MRN:</strong> {mrn?.mrn}
               </p>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className='text-xs md:text-sm text-gray-600'>
                 <strong>File Number:</strong> {mrn?.fileNumber}
               </p>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className='text-xs md:text-sm text-gray-600'>
                 <strong>Phone:</strong> {mrn?.phone}
               </p>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className='text-xs md:text-sm text-gray-600'>
                 <strong>Ethnic Group:</strong> {mrn?.ethnicGroup}
               </p>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className='text-xs md:text-sm text-gray-600'>
                 <strong>State of Origin:</strong> {mrn?.stateOfOrigin}
               </p>
-              <p className="text-xs md:text-sm text-gray-600">
+              <p className='text-xs md:text-sm text-gray-600'>
                 <strong>Date of Birth:</strong> {mrn?.dateOfBirth}
               </p>
 
               {mrn && (
-                <p className="text-xs md:text-sm text-gray-600">
-                  <strong>Generated On:</strong>{" "}
-                  {mrn?.createdAt ? dateformat(mrn?.createdAt!) : "N/A"}
+                <p className='text-xs md:text-sm text-gray-600'>
+                  <strong>Generated On:</strong>
+                  {mrn?.createdAt ? dateformat(mrn.createdAt) : 'N/A'}
                 </p>
               )}
 
               {creator && (
-                <div className="flex flex-col gap-1 border-2 p-2 rounded-sm">
+                <div className='flex flex-col gap-1 border-2 p-2 rounded-sm'>
                   <h2>GENERATED BY:</h2>
-                  <p className="text-xs md:text-sm text-gray-600">
+                  <p className='text-xs md:text-sm text-gray-600'>
                     <strong>Name:</strong> {creator?.name}
                   </p>
 
-                  <p className="text-xs md:text-sm text-gray-600">
+                  <p className='text-xs md:text-sm text-gray-600'>
                     <strong>Email:</strong> {creator?.email}
                   </p>
-                  <p className="text-xs md:text-sm text-gray-600">
+                  <p className='text-xs md:text-sm text-gray-600'>
                     <strong>station:</strong> {creator?.station}
                   </p>
-                  <p className="text-xs md:text-sm text-gray-600">
+                  <p className='text-xs md:text-sm text-gray-600'>
                     <strong>Phone:</strong> {creator?.phone}
                   </p>
                 </div>
@@ -119,15 +119,15 @@ const AdminFile: React.FC<AdminFileProps> = ({ mrn, setMRNId }) => {
             <FileAttachmentContainer files={filesAtt} />
           )}
 
-          <div className="text-sm flex items-center justify-center gap-4 p-1">
+          <div className='text-sm flex items-center justify-center gap-4 p-1'>
             <button
-              className="w-24 text-blue-500 border border-blue-500  py-1 px-2 rounded-md"
+              className='w-24 text-blue-500 border border-blue-500  py-1 px-2 rounded-md'
               onClick={() => setIsEdit(true)}
             >
               Edit
-            </button>{" "}
+            </button>{' '}
             <button
-              className="w-24 text-red-500 border border-red-500 p-1 rounded-md"
+              className='w-24 text-red-500 border border-red-500 p-1 rounded-md'
               onClick={handleDeleteMRN}
             >
               Delete
@@ -138,13 +138,13 @@ const AdminFile: React.FC<AdminFileProps> = ({ mrn, setMRNId }) => {
 
       {isEdit && (
         <TableModal onClose={handleCloseModal}>
-          <div className="pt-12 mt-2">
+          <div className='pt-12 mt-2'>
             <FormEditMRN file={mrn!} setIsEdit={setIsEdit} />
           </div>
         </TableModal>
       )}
     </>
-  );
-};
+  )
+}
 
-export default AdminFile;
+export default AdminFile
