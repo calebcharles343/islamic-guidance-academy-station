@@ -5,7 +5,7 @@ import TableModal from '../../ui/TableModal'
 import EditMemberForm from './EditMemberForm'
 import Swal from 'sweetalert2'
 import { useDeleteMember } from './useDeleteMember'
-import { dateformat } from '../../utils/dateFormat'
+// import { dateformat } from '../../utils/dateFormat'
 
 interface AdminMemberProps {
   member: Verification | null
